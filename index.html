@@ -116,11 +116,30 @@ html[data-theme="dark"] .phone-img.blue{display:block}
 .prop.die:hover .dice-img.bounce{animation:diceBounce .6s cubic-bezier(.34,1.5,.5,1)}
 @keyframes diceSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 @keyframes diceBounce{0%{transform:translateY(0) scale(1)}28%{transform:translateY(-20px) scale(1.14)}52%{transform:translateY(0) scale(.92)}72%{transform:translateY(-8px) scale(1.05)}100%{transform:translateY(0) scale(1)}}
-.prop.win{left:4%;top:360px;width:auto;height:auto;--r:0deg;background:none;border:0;box-shadow:none;color:inherit;overflow:visible}
+.prop.win{left:4%;top:360px;width:auto;height:auto;--r:0deg;background:none;border:0;box-shadow:none;color:inherit;overflow:visible;cursor:pointer;z-index:10}
 .cloud-img{display:block;width:clamp(120px,14vw,168px);height:auto;filter:drop-shadow(5px 8px 5px rgba(0,0,0,.32))}
 .bolt{display:none;position:absolute;left:48%;top:calc(100% - 10px);transform:translateX(-50%);font-size:clamp(22px,2.6vw,32px);line-height:1}
 html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out infinite}
 @keyframes boltFlash{0%,88%,100%{opacity:.72;filter:saturate(1.7) brightness(1.15) drop-shadow(0 0 5px rgba(255,210,0,.65))}90%,96%{opacity:1;filter:saturate(1.85) brightness(1.3) drop-shadow(0 0 13px rgba(255,224,40,1))}93%{opacity:.55}}
+.rain{position:absolute;left:8%;right:8%;top:calc(100% - 16px);height:64px;display:none;pointer-events:none}
+.prop.win:hover .rain{display:block}
+.rain i{position:absolute;top:0;width:4px;height:22px;border-radius:3px;
+  background:linear-gradient(rgba(120,180,255,0),rgba(86,156,255,.95));animation:rainDrop .8s linear infinite}
+.rain i:nth-child(1){left:12%;animation-delay:0s}
+.rain i:nth-child(2){left:30%;animation-delay:.28s}
+.rain i:nth-child(3){left:46%;animation-delay:.12s}
+.rain i:nth-child(4){left:62%;animation-delay:.42s}
+.rain i:nth-child(5){left:78%;animation-delay:.2s}
+.rain i:nth-child(6){left:90%;animation-delay:.55s}
+@keyframes rainDrop{0%{transform:translateY(-6px);opacity:0}18%{opacity:1}100%{transform:translateY(56px);opacity:0}}
+.storm{position:absolute;left:50%;top:calc(100% - 2px);transform:translateX(-50%) scale(.4);
+  font-size:clamp(28px,3.2vw,40px);line-height:1;opacity:0;pointer-events:none}
+.storm.show{animation:stormPop 1.2s ease-out}
+@keyframes stormPop{
+  0%{opacity:0;transform:translateX(-50%) scale(.4);filter:drop-shadow(0 0 0 rgba(120,170,255,0))}
+  18%{opacity:1;transform:translateX(-50%) scale(1.18);filter:drop-shadow(0 0 16px rgba(130,180,255,.95)) drop-shadow(0 0 30px rgba(255,224,40,.7))}
+  45%{transform:translateX(-50%) scale(1);filter:drop-shadow(0 0 12px rgba(130,180,255,.85)) drop-shadow(0 0 22px rgba(255,224,40,.6))}
+  100%{opacity:0;transform:translateX(-50%) scale(1);filter:drop-shadow(0 0 0 rgba(120,170,255,0))}}
 @media(max-width:900px){.prop.die,.prop.win{display:none}}
 @media(max-width:620px){.prop{display:none!important}}
 
@@ -357,9 +376,11 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   <span class="prop die" id="diceProp" role="button" tabindex="0" aria-label="Roll the dice">
     <img class="dice-img" src="slides/dice.png" alt="Blue dice" />
   </span>
-  <span class="prop win" aria-label="Floating cloud">
+  <span class="prop win" id="cloudProp" role="button" tabindex="0" aria-label="Make it storm">
     <img class="cloud-img" src="slides/cloud.png" alt="Cloud" />
     <span class="bolt" aria-hidden="true">⚡</span>
+    <span class="rain" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+    <span class="storm" aria-hidden="true">⚡</span>
   </span>
   <h1 class="h-title">Portfolio</h1>
   <div class="folder-stage">
@@ -432,9 +453,9 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
     <div class="sayhello-wrap">
       <button class="sayhello" id="sayhello" data-i18n="sayhello">Say Hello →</button>
       <div class="hello-pop" id="hellopop">
-        <a href="mailto:yashkumaritaly01@gmail.com">
+        <a href="/cdn-cgi/l/email-protection#eb928a9883809e868a99829f8a8792dbdaab8c868a8287c5888486">
           <svg viewBox="0 0 24 24" fill="none" stroke="#3b3fe4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-          yashkumaritaly01@gmail.com
+          <span class="__cf_email__" data-cfemail="94edf5e7fcffe1f9f5e6fde0f5f8eda4a5d4f3f9f5fdf8baf7fbf9">[email&#160;protected]</span>
         </a>
         <a href="https://www.linkedin.com/in/yash-kumar-1yk/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="#0a66c2"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
@@ -451,9 +472,9 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   <div class="foot-inner">
     <span data-i18n="foot_role">UX/UI Designer</span>
     <div class="foot-mid">
-      <a href="mailto:yashkumaritaly01@gmail.com">
+      <a href="/cdn-cgi/l/email-protection#c2bba3b1aaa9b7afa3b0abb6a3aebbf2f382a5afa3abaeeca1adaf">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-        yashkumaritaly01@gmail.com
+        <span class="__cf_email__" data-cfemail="c3baa2b0aba8b6aea2b1aab7a2afbaf3f283a4aea2aaafeda0acae">[email&#160;protected]</span>
       </a>
       <a href="https://www.linkedin.com/in/yash-kumar-1yk/" target="_blank" rel="noopener" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24" fill="#fff"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
@@ -479,7 +500,7 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ---------- i18n ---------- */
 const T={
   en:{nav_work:"Projects",nav_about:"About me",nav_contact:"Contact",reading:"currently reading",
@@ -669,6 +690,12 @@ if(diceProp){const diceImg=diceProp.querySelector(".dice-img");
   diceImg.addEventListener("animationend",e=>{if(e.animationName==="diceBounce")diceImg.classList.remove("bounce");});
   diceProp.addEventListener("click",roll);
   diceProp.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();roll();}});}
+const cloudProp=document.getElementById("cloudProp");
+if(cloudProp){const storm=cloudProp.querySelector(".storm");
+  const strike=()=>{storm.classList.remove("show");void storm.offsetWidth;storm.classList.add("show");};
+  storm.addEventListener("animationend",()=>storm.classList.remove("show"));
+  cloudProp.addEventListener("click",strike);
+  cloudProp.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();strike();}});}
 document.querySelectorAll(".file").forEach(el=>el.addEventListener("click",e=>{e.stopPropagation();if(el.classList.contains("wip"))return;openFile(el.dataset.file);}));
 document.getElementById("close").onclick=closeFile;
 document.getElementById("zoom").onclick=()=>macwin.classList.toggle("expanded");
