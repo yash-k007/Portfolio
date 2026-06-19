@@ -81,7 +81,7 @@ html[data-theme="dark"] .theme-btn .knob{transform:translateX(26px)}
   box-shadow:var(--e1);font-weight:600;font-size:13px;padding:8px 16px;border-radius:999px}
 .tag .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
 .h-title{font-family:var(--font-serif);font-weight:600;letter-spacing:-.02em;line-height:.92;
-  font-size:clamp(54px,11vw,143px);margin:18px 0 8px}
+  font-size:clamp(56px,11vw,145px);margin:18px 0 8px}
 /* floating props */
 .prop{position:absolute;border-radius:18px;display:grid;place-items:center;box-shadow:var(--e2);
   animation:float 7s ease-in-out infinite;color:#fff}
@@ -109,10 +109,13 @@ html[data-theme="dark"] .phone-img.blue{display:block}
   0%,100%{filter:drop-shadow(0 0 16px rgba(46,150,255,.65)) drop-shadow(6px 10px 6px rgba(0,0,0,.44))}
   50%{filter:drop-shadow(0 0 30px rgba(46,150,255,.95)) drop-shadow(0 0 54px rgba(46,150,255,.55)) drop-shadow(6px 10px 6px rgba(0,0,0,.44))}
 }
-.prop.die{right:8%;top:360px;width:auto;height:auto;--r:-12deg;background:none;border-radius:0;box-shadow:none;color:inherit;overflow:visible;cursor:pointer}
+.prop.die{right:8%;top:360px;width:auto;height:auto;--r:-12deg;background:none;border-radius:0;box-shadow:none;color:inherit;overflow:visible;cursor:pointer;z-index:10}
 .dice-img{display:block;height:64px;width:auto;filter:drop-shadow(5px 9px 6px rgba(0,0,0,.48))}
-.dice-img.rolling{animation:diceRoll .7s cubic-bezier(.34,1.4,.5,1)}
-@keyframes diceRoll{0%{transform:rotate(0deg) scale(1)}25%{transform:rotate(150deg) scale(1.18)}55%{transform:rotate(300deg) scale(.9)}78%{transform:rotate(382deg) scale(1.08)}100%{transform:rotate(360deg) scale(1)}}
+.dice-img.bounce{animation:diceBounce .6s cubic-bezier(.34,1.5,.5,1)}
+.prop.die:hover .dice-img{animation:diceSpin 1s linear infinite}
+.prop.die:hover .dice-img.bounce{animation:diceBounce .6s cubic-bezier(.34,1.5,.5,1)}
+@keyframes diceSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes diceBounce{0%{transform:translateY(0) scale(1)}28%{transform:translateY(-20px) scale(1.14)}52%{transform:translateY(0) scale(.92)}72%{transform:translateY(-8px) scale(1.05)}100%{transform:translateY(0) scale(1)}}
 .prop.win{left:4%;top:360px;width:auto;height:auto;--r:0deg;background:none;border:0;box-shadow:none;color:inherit;overflow:visible}
 .cloud-img{display:block;width:clamp(120px,14vw,168px);height:auto;filter:drop-shadow(5px 8px 5px rgba(0,0,0,.32))}
 .bolt{display:none;position:absolute;left:48%;top:calc(100% - 10px);transform:translateX(-50%);font-size:clamp(22px,2.6vw,32px);line-height:1}
@@ -199,8 +202,8 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
 /* ---------- SECTIONS ---------- */
 .sec-h{font-weight:800;font-size:clamp(28px,4vw,46px);letter-spacing:-.02em;margin:64px 0 22px}
 .card{background:var(--bg-secondary);border-radius:26px;padding:clamp(24px,4vw,40px)}
-.who{max-width:560px}
-.who p{font-size:clamp(16px,1.4vw,19px);color:var(--label);line-height:1.55}
+.who{max-width:760px}
+.who p{font-size:clamp(22px,1.9vw,25px);color:var(--label);line-height:1.55}
 .who a{color:var(--accent);font-weight:600}
 
 /* toolbox marquee */
@@ -235,13 +238,27 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
 .sayhello{background:#fff;color:#111;font-weight:700;border:0;border-radius:999px;padding:15px 26px;font-size:15px;
   cursor:pointer;white-space:nowrap;transition:transform .25s var(--spring)}
 .sayhello:hover{transform:scale(1.04)}
+.sayhello-wrap{position:relative;display:inline-block}
+.hello-pop{position:absolute;right:0;bottom:calc(100% + 12px);z-index:50;display:none;flex-direction:column;gap:6px;
+  background:#fff;border-radius:14px;padding:8px;box-shadow:0 16px 44px rgba(0,0,0,.22);min-width:230px}
+.hello-pop.open{display:flex}
+.hello-pop a{display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:9px;text-decoration:none;
+  color:#111;font-weight:600;font-size:14px;transition:background .15s}
+.hello-pop a:hover{background:#f1f1f4}
+.hello-pop svg{flex:0 0 auto;width:19px;height:19px}
 
 /* footer */
 .foot{margin-top:48px;position:relative}
 .foot-bg{display:block;width:100%;height:auto}
-.foot-inner{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:flex-end;align-items:center;
-  gap:14px 24px;padding:36px clamp(20px,5vw,48px) 44px;flex-wrap:wrap;z-index:1}
+.foot-inner{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;
+  gap:14px 24px;padding:48px clamp(20px,5vw,48px) 34px;flex-wrap:wrap;z-index:1;
+  background:linear-gradient(to top,rgba(0,0,0,.6) 0%,rgba(0,0,0,.42) 45%,rgba(0,0,0,0) 100%)}
 .foot span{font-weight:600;font-size:13px;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.foot-mid{display:flex;align-items:center;gap:18px}
+.foot-mid a{display:flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-weight:600;font-size:13px;
+  text-shadow:0 1px 8px rgba(0,0,0,.6);transition:opacity .15s}
+.foot-mid a:hover{opacity:.75}
+.foot-mid svg{width:17px;height:17px;filter:drop-shadow(0 1px 4px rgba(0,0,0,.5))}
 
 /* ---------- MODAL ---------- */
 .overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.45);backdrop-filter:blur(8px);
@@ -291,18 +308,6 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
 .logo,.statement,.sec-h,.file h4,.file .big,.file .kic,.cta .big,.cta .eyebrow,.foot .logo-f,
 .coin .b,.coin .disc,.skill h5,.toolbox .lbl b,.sayhello{font-weight:600}
 
-/* ---- Framer-condition simulator (preview only) ---- */
-.simwrap{transform:translateZ(0)}
-.fixbar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:300;display:flex;gap:12px;align-items:center;
-  background:rgba(18,18,20,.92);color:#fff;border-radius:999px;padding:8px 10px 8px 20px;box-shadow:0 10px 34px rgba(0,0,0,.4);
-  font-family:var(--font-mono);font-size:12px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-.fixbar b{font-weight:600;letter-spacing:.02em}
-.fixbar .note{opacity:.55;white-space:nowrap}
-.fixbar button{border:0;border-radius:999px;padding:8px 15px;font:inherit;font-weight:600;cursor:pointer;
-  background:#34d27b;color:#053a1d;transition:background .2s,color .2s}
-.fixbar button.off{background:#ff5f57;color:#3a0000}
-@media(max-width:620px){.fixbar .note{display:none}}
-
 /* ---- PDF case-study document viewer ---- */
 .macbody.pdfmode{padding:0;background:#26262b}
 .pdfdoc{display:flex;flex-direction:column;gap:16px;padding:18px}
@@ -317,8 +322,6 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
 </head>
 <body>
 <h2 class="sr-only">Interactive prototype of the YASH iOS Core portfolio: a folder of project files, toolbox, and contact, with light/dark and EN/IT toggles.</h2>
-<div class="simwrap">
-
 <!-- NAV -->
 <nav class="nav"><div class="nav-inner">
   <a class="nav-logo" href="#" onclick="return false;" aria-label="YASH"><img src="slides/logo-metal.png" alt="YASH" /></a>
@@ -426,15 +429,37 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
       <div class="eyebrow" data-i18n="getintouch">GET IN TOUCH</div>
       <div class="big" data-i18n="cta_big">Leave me a message</div>
     </div>
-    <button class="sayhello" data-i18n="sayhello">Say Hello →</button>
+    <div class="sayhello-wrap">
+      <button class="sayhello" id="sayhello" data-i18n="sayhello">Say Hello →</button>
+      <div class="hello-pop" id="hellopop">
+        <a href="mailto:yashkumaritaly01@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3b3fe4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          yashkumaritaly01@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/yash-kumar-1yk/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="#0a66c2"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
   </div>
 </div></section>
 
 <!-- FOOTER -->
 <footer class="foot">
-  <img class="foot-bg" src="slides/footer-bg-2.png" alt="" aria-hidden="true" />
+  <img class="foot-bg" src="slides/footer-bg-3.png" alt="" aria-hidden="true" />
   <div class="foot-inner">
-    <span data-i18n="foot_role">UX/UI Designer · Milan · 2026</span>
+    <span data-i18n="foot_role">UX/UI Designer</span>
+    <div class="foot-mid">
+      <a href="mailto:yashkumaritaly01@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+        yashkumaritaly01@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/yash-kumar-1yk/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="#fff"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+      </a>
+    </div>
+    <span data-i18n="foot_yr">Milan · 2026</span>
   </div>
 </footer>
 
@@ -454,14 +479,6 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   </div>
 </div>
 
-</div><!-- /simwrap -->
-
-<div class="fixbar">
-  <b>Framer transform sim</b>
-  <span class="note">scroll down, then open a project →</span>
-  <button id="fixtoggle">Modal fix: ON</button>
-</div>
-
 <script>
 /* ---------- i18n ---------- */
 const T={
@@ -472,7 +489,7 @@ const T={
     who_body:'A <a href="#">CS grad turned UX/UI Designer</a> — I bridge the gap between logic and creativity. After a front-end internship building mobile apps, I realised the most dangerous thing I could be was a designer who actually knows how to code.',
     tb_title:"THE TOOLBOX",tb_sub:"Tools and technical craft I work with every day",skills_w:"skills",
     based:"Based in",getintouch:"GET IN TOUCH",cta_big:"Leave me a message",
-    sayhello:"Say Hello →",foot_role:"UX/UI Designer · Milan · 2026",foot_tag:"Thinking outside of the Bot"},
+    sayhello:"Say Hello →",foot_role:"UX/UI Designer",foot_yr:"Milan · 2026",foot_tag:"Thinking outside of the Bot"},
   it:{nav_work:"Progetti",nav_about:"Chi sono",nav_contact:"Contatti",reading:"sto leggendo",
     hint:"Passa / tocca per aprire la cartella",f_explore:"ESPLORAZIONE",f_research:"RICERCA",f_case:"CASE STUDY",
     f_wire:"WIREFRAME",f_tool:"STRUMENTO",f1:"Studio Dark Mode",f2:"Mappa del Percorso Utente",f3:"App Bancaria Minimale",f4:"Wireframe",
@@ -480,7 +497,7 @@ const T={
     who_body:'Un <a href="#">laureato in informatica diventato UX/UI Designer</a> — colmo il divario tra logica e creatività. Dopo uno stage front-end sviluppando app mobile, ho capito che la cosa più pericolosa che potevo essere era un designer che sa davvero programmare.',
     tb_title:"LA CASSETTA DEGLI ATTREZZI",tb_sub:"Strumenti e tecnica con cui lavoro ogni giorno",skills_w:"trasversali",
     based:"Con sede a",getintouch:"CONTATTAMI",cta_big:"Lasciami un messaggio",
-    sayhello:"Scrivimi →",foot_role:"UX/UI Designer · Milano · 2026",foot_tag:"Pensare fuori dagli schemi"}
+    sayhello:"Scrivimi →",foot_role:"UX/UI Designer",foot_yr:"Milano · 2026",foot_tag:"Pensare fuori dagli schemi"}
 };
 let lang="en";
 function applyLang(){
@@ -543,18 +560,8 @@ const FILES={
 /* ---------- modal ---------- */
 const overlay=document.getElementById("overlay"),macwin=document.getElementById("macwin"),
   mbody=document.getElementById("mbody"),mtitle=document.getElementById("mtitle");
-/* ---- portal fix demo: move overlay to <body> so position:fixed pins to the
-   viewport instead of the transformed .simwrap (which is how Framer wraps the
-   component). Toggle FIX.on to see the before/after. ---- */
-const simwrap=document.querySelector(".simwrap");
-const FIX={on:true};
-function portalOverlay(){
-  if(FIX.on){if(overlay.parentElement!==document.body)document.body.appendChild(overlay);}
-  else{if(overlay.parentElement!==simwrap)simwrap.appendChild(overlay);}
-}
-const fixBtn=document.getElementById("fixtoggle");
-fixBtn.onclick=()=>{FIX.on=!FIX.on;fixBtn.textContent="Modal fix: "+(FIX.on?"ON":"OFF");
-  fixBtn.classList.toggle("off",!FIX.on);portalOverlay();};
+/* keep the project modal pinned to the viewport */
+function portalOverlay(){if(overlay.parentElement!==document.body)document.body.appendChild(overlay);}
 
 /* ---- Case-study PDF document viewer (Libraccio, VivoVero, …) ---- */
 const pdfDocPromises={};
@@ -647,14 +654,19 @@ function openFile(key){
   mbody.scrollTop=0;portalOverlay();overlay.classList.add("show");
 }
 function closeFile(){overlay.classList.remove("show");macwin.classList.remove("expanded");mbody.classList.remove("pdfmode");}
+const helloBtn=document.getElementById("sayhello"),helloPop=document.getElementById("hellopop");
+if(helloBtn&&helloPop){
+  helloBtn.addEventListener("click",e=>{e.stopPropagation();helloPop.classList.toggle("open");});
+  document.addEventListener("click",e=>{if(!helloPop.contains(e.target)&&e.target!==helloBtn)helloPop.classList.remove("open");});
+}
 const phoneProp=document.getElementById("phoneProp");
 if(phoneProp){const toggleGlow=()=>phoneProp.classList.toggle("lit");
   phoneProp.addEventListener("click",toggleGlow);
   phoneProp.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();toggleGlow();}});}
 const diceProp=document.getElementById("diceProp");
 if(diceProp){const diceImg=diceProp.querySelector(".dice-img");
-  const roll=()=>{diceImg.classList.remove("rolling");void diceImg.offsetWidth;diceImg.classList.add("rolling");};
-  diceImg.addEventListener("animationend",()=>diceImg.classList.remove("rolling"));
+  const roll=()=>{diceImg.classList.remove("bounce");void diceImg.offsetWidth;diceImg.classList.add("bounce");};
+  diceImg.addEventListener("animationend",e=>{if(e.animationName==="diceBounce")diceImg.classList.remove("bounce");});
   diceProp.addEventListener("click",roll);
   diceProp.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();roll();}});}
 document.querySelectorAll(".file").forEach(el=>el.addEventListener("click",e=>{e.stopPropagation();if(el.classList.contains("wip"))return;openFile(el.dataset.file);}));
