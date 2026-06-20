@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>YASH's Portfolio [in progress] </title>
+<title>YASH. — iOS Core Portfolio (Prototype)</title>
+<link rel="icon" type="image/png" href="slides/logo.png" />
+<link rel="apple-touch-icon" href="slides/logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -88,22 +90,28 @@ html[data-theme="dark"] .theme-btn .knob{transform:translateX(26px)}
 @keyframes float{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-14px) rotate(var(--r,0deg))}}
 /* currently-reading book sticker */
 .prop.book{left:3%;top:120px;width:auto;height:auto;background:none;box-shadow:none;border-radius:0;color:inherit;overflow:visible;z-index:5}
-.book-inner{position:relative;display:inline-block;transition:transform .35s var(--spring);transform-origin:55% bottom;cursor:pointer}
+.book-inner{position:relative;display:inline-block;width:clamp(69px,9.4vw,125px);height:clamp(72px,9.8vw,130px);transition:transform .35s var(--spring);transform-origin:55% bottom;cursor:pointer}
 .prop.book:hover .book-inner{transform:scale(1.12) translateY(-6px)}
 .prop.book:hover .book-img{filter:drop-shadow(9px 12px 8px rgba(0,0,0,.44))}
 .prop.book:hover .cr-callout{box-shadow:var(--e2)}
-.book-img{display:block;height:clamp(72px,9.8vw,130px);width:auto;
+.book-img{display:block;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:100%;width:auto;
   filter:drop-shadow(7px 9px 6px rgba(0,0,0,.42));transition:filter .35s var(--spring)}
+.book-img.open{height:134%;display:none}
+.prop.book.opened .book-img.closed{display:none}
+.prop.book.opened .book-img.open{display:block}
 .cr-callout{position:absolute;left:44%;bottom:calc(100% - 2px);white-space:nowrap;
   background:var(--bg-tertiary);color:var(--label);font-family:var(--font-display);font-weight:600;
   font-size:clamp(11px,1.25vw,15px);line-height:1;padding:9px 15px;border-radius:16px;box-shadow:var(--e1)}
 .cr-callout::after{content:"";position:absolute;left:15px;bottom:-5px;width:13px;height:13px;
   background:var(--bg-tertiary);transform:rotate(45deg);border-radius:0 0 3px 0}
-.prop.phone{right:5%;top:150px;width:auto;height:auto;--r:-15deg;background:none;border-radius:0;box-shadow:none;color:inherit;overflow:visible;cursor:pointer}
-.phone-img{display:none;height:clamp(105px,11.9vw,155px);width:auto;filter:drop-shadow(6px 10px 6px rgba(0,0,0,.46));transition:filter .4s ease}
+.prop.phone{right:5%;top:150px;width:clamp(72px,8.2vw,107px);height:clamp(105px,11.9vw,155px);--r:-15deg;background:none;border-radius:0;box-shadow:none;color:inherit;overflow:visible;cursor:pointer;z-index:12}
+.phone-img{display:none;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:100%;width:auto;filter:drop-shadow(6px 10px 6px rgba(0,0,0,.46));transition:filter .4s ease}
 .phone-img.dark{display:block}
 html[data-theme="dark"] .phone-img.dark{display:none}
 html[data-theme="dark"] .phone-img.blue{display:block}
+.phone-img.cracked{height:150%;transform:translate(-50%,-45.5%)}
+.prop.phone.broken .phone-img.dark,.prop.phone.broken .phone-img.blue{display:none!important}
+.prop.phone.broken .phone-img.cracked{display:block}
 .prop.phone.lit .phone-img{animation:phoneGlow 1.8s ease-in-out infinite}
 @keyframes phoneGlow{
   0%,100%{filter:drop-shadow(0 0 16px rgba(46,150,255,.65)) drop-shadow(6px 10px 6px rgba(0,0,0,.44))}
@@ -363,15 +371,17 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
 
 <!-- HERO -->
 <header class="hero wrap" id="work">
-  <span class="prop book" aria-label="Currently reading: Sprint by Jake Knapp">
+  <span class="prop book" id="bookProp" role="button" tabindex="0" aria-label="Currently reading: Sprint by Jake Knapp — tap to open">
     <span class="book-inner">
       <span class="cr-callout" data-i18n="reading">currently reading</span>
-      <img class="book-img" src="slides/book-cr.png" alt="Sprint by Jake Knapp — book cover" />
+      <img class="book-img closed" src="slides/book-cr.png" alt="Sprint by Jake Knapp — book cover" />
+      <img class="book-img open" src="slides/book-open.png" alt="Open book — Sprint, Time and Space chapter" />
     </span>
   </span>
   <span class="prop phone" id="phoneProp" role="button" tabindex="0" aria-label="Tap to glow the screen">
     <img class="phone-img dark" src="slides/phone-dark.png" alt="iPhone with smiley screen" />
     <img class="phone-img blue" src="slides/phone-blue.png" alt="iPhone with blue smiley screen" />
+    <img class="phone-img cracked" src="slides/phone-cracked.png" alt="iPhone with cracked screen" />
   </span>
   <span class="prop die" id="diceProp" role="button" tabindex="0" aria-label="Roll the dice">
     <img class="dice-img" src="slides/dice.png" alt="Blue dice" />
@@ -453,9 +463,9 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
     <div class="sayhello-wrap">
       <button class="sayhello" id="sayhello" data-i18n="sayhello">Say Hello →</button>
       <div class="hello-pop" id="hellopop">
-        <a href="/cdn-cgi/l/email-protection#eb928a9883809e868a99829f8a8792dbdaab8c868a8287c5888486">
+        <a href="/cdn-cgi/l/email-protection#374e56445f5c425a56455e43565b4e070677505a565e5b1954585a">
           <svg viewBox="0 0 24 24" fill="none" stroke="#3b3fe4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-          <span class="__cf_email__" data-cfemail="94edf5e7fcffe1f9f5e6fde0f5f8eda4a5d4f3f9f5fdf8baf7fbf9">[email&#160;protected]</span>
+          <span class="__cf_email__" data-cfemail="0d746c7e656678606c7f64796c61743d3c4d6a606c6461236e6260">[email&#160;protected]</span>
         </a>
         <a href="https://www.linkedin.com/in/yash-kumar-1yk/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="#0a66c2"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
@@ -472,9 +482,9 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   <div class="foot-inner">
     <span data-i18n="foot_role">UX/UI Designer</span>
     <div class="foot-mid">
-      <a href="/cdn-cgi/l/email-protection#c2bba3b1aaa9b7afa3b0abb6a3aebbf2f382a5afa3abaeeca1adaf">
+      <a href="/cdn-cgi/l/email-protection#60190113080b150d01120914010c19505120070d01090c4e030f0d">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-        <span class="__cf_email__" data-cfemail="c3baa2b0aba8b6aea2b1aab7a2afbaf3f283a4aea2aaafeda0acae">[email&#160;protected]</span>
+        <span class="__cf_email__" data-cfemail="e990889a81829c84889b809d888590d9d8a98e84888085c78a8684">[email&#160;protected]</span>
       </a>
       <a href="https://www.linkedin.com/in/yash-kumar-1yk/" target="_blank" rel="noopener" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24" fill="#fff"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
@@ -681,9 +691,13 @@ if(helloBtn&&helloPop){
   document.addEventListener("click",e=>{if(!helloPop.contains(e.target)&&e.target!==helloBtn)helloPop.classList.remove("open");});
 }
 const phoneProp=document.getElementById("phoneProp");
-if(phoneProp){const toggleGlow=()=>phoneProp.classList.toggle("lit");
-  phoneProp.addEventListener("click",toggleGlow);
-  phoneProp.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();toggleGlow();}});}
+if(phoneProp){const togglePhone=()=>phoneProp.classList.toggle("broken");
+  phoneProp.addEventListener("click",togglePhone);
+  phoneProp.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();togglePhone();}});}
+const bookProp=document.getElementById("bookProp");
+if(bookProp){const toggleBook=()=>bookProp.classList.toggle("opened");
+  bookProp.addEventListener("click",toggleBook);
+  bookProp.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();toggleBook();}});}
 const diceProp=document.getElementById("diceProp");
 if(diceProp){const diceImg=diceProp.querySelector(".dice-img");
   const roll=()=>{diceImg.classList.remove("bounce");void diceImg.offsetWidth;diceImg.classList.add("bounce");};
