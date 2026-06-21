@@ -302,11 +302,11 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   -webkit-backdrop-filter:blur(8px);display:grid;place-items:center;padding:24px;opacity:0;pointer-events:none;
   transition:opacity .35s ease}
 .overlay.show{opacity:1;pointer-events:auto}
-.macwin{width:min(880px,100%);height:min(86vh,820px);background:var(--bg-elevated);border-radius:18px;overflow:hidden;
+.macwin{width:min(1180px,100%);height:94vh;background:var(--bg-elevated);border-radius:18px;overflow:hidden;
   box-shadow:0 40px 120px rgba(0,0,0,.55);display:flex;flex-direction:column;transform:translateY(30px) scale(.96);
   opacity:0;transition:transform .45s var(--sheet),opacity .35s ease,width .4s var(--sheet),height .4s var(--sheet)}
 .overlay.show .macwin{transform:none;opacity:1}
-.macwin.expanded{width:min(1180px,100%);height:94vh}
+.macwin.expanded{position:fixed;inset:0;width:auto;height:auto;max-width:none;border-radius:0}
 .titlebar{height:46px;flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:0 16px;
   background:var(--bg-secondary);border-bottom:1px solid var(--separator)}
 .lights{display:flex;gap:8px}
@@ -481,9 +481,9 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
     <div class="sayhello-wrap">
       <button class="sayhello" id="sayhello" data-i18n="sayhello">Say Hello →</button>
       <div class="hello-pop" id="hellopop">
-        <a href="/cdn-cgi/l/email-protection#0a736b7962617f676b78637e6b66733a3b4a6d676b636624696567">
+        <a href="/cdn-cgi/l/email-protection#ed948c9e858698808c9f84998c8194dddcad8a808c8481c38e8280">
           <svg viewBox="0 0 24 24" fill="none" stroke="#3b3fe4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-          <span class="__cf_email__" data-cfemail="dba2baa8b3b0aeb6baa9b2afbab7a2ebea9bbcb6bab2b7f5b8b4b6">[email&#160;protected]</span>
+          <span class="__cf_email__" data-cfemail="f48d95879c9f819995869d8095988dc4c5b49399959d98da979b99">[email&#160;protected]</span>
         </a>
         <a href="https://www.linkedin.com/in/yash-kumar-1yk/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="#0a66c2"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
@@ -500,9 +500,9 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   <div class="foot-inner">
     <span data-i18n="foot_role">UX/UI Designer</span>
     <div class="foot-mid">
-      <a href="/cdn-cgi/l/email-protection#b9c0d8cad1d2ccd4d8cbd0cdd8d5c08988f9ded4d8d0d597dad6d4">
+      <a href="/cdn-cgi/l/email-protection#344d55475c5f415955465d4055584d0405745359555d581a575b59">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-        <span class="__cf_email__" data-cfemail="21584052494a544c40534855404d58111061464c40484d0f424e4c">[email&#160;protected]</span>
+        <span class="__cf_email__" data-cfemail="f28b93819a99879f93809b86939e8bc2c3b2959f939b9edc919d9f">[email&#160;protected]</span>
       </a>
       <a href="https://www.linkedin.com/in/yash-kumar-1yk/" target="_blank" rel="noopener" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24" fill="#fff"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
