@@ -481,9 +481,9 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
     <div class="sayhello-wrap">
       <button class="sayhello" id="sayhello" data-i18n="sayhello">Say Hello →</button>
       <div class="hello-pop" id="hellopop">
-        <a href="mailto:yashkumaritaly01@gmail.com">
+        <a href="/cdn-cgi/l/email-protection#0a736b7962617f676b78637e6b66733a3b4a6d676b636624696567">
           <svg viewBox="0 0 24 24" fill="none" stroke="#3b3fe4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-          yashkumaritaly01@gmail.com
+          <span class="__cf_email__" data-cfemail="dba2baa8b3b0aeb6baa9b2afbab7a2ebea9bbcb6bab2b7f5b8b4b6">[email&#160;protected]</span>
         </a>
         <a href="https://www.linkedin.com/in/yash-kumar-1yk/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="#0a66c2"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
@@ -500,9 +500,9 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   <div class="foot-inner">
     <span data-i18n="foot_role">UX/UI Designer</span>
     <div class="foot-mid">
-      <a href="mailto:yashkumaritaly01@gmail.com">
+      <a href="/cdn-cgi/l/email-protection#b9c0d8cad1d2ccd4d8cbd0cdd8d5c08988f9ded4d8d0d597dad6d4">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-        yashkumaritaly01@gmail.com
+        <span class="__cf_email__" data-cfemail="21584052494a544c40534855404d58111061464c40484d0f424e4c">[email&#160;protected]</span>
       </a>
       <a href="https://www.linkedin.com/in/yash-kumar-1yk/" target="_blank" rel="noopener" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24" fill="#fff"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
@@ -531,7 +531,7 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ---------- i18n ---------- */
 const T={
   en:{nav_work:"Projects",nav_about:"About me",nav_contact:"Contact",reading:"currently reading",
@@ -627,13 +627,13 @@ function loadPdf(url){
 async function renderPdfPage(pdf,n,slot){
   try{
     const page=await pdf.getPage(n);
-    const dpr=Math.min(1.5,window.devicePixelRatio||1);
+    const ss=Math.max(2,window.devicePixelRatio||1); // 2x supersample — full-quality slides
     const base=page.getViewport({scale:1});
-    const targetW=Math.max(slot.clientWidth,760)*dpr;
+    const targetW=Math.max(slot.clientWidth,820)*ss;
     const vp=page.getViewport({scale:targetW/base.width});
     const cv=document.createElement("canvas");cv.width=vp.width;cv.height=vp.height;
     await page.render({canvasContext:cv.getContext("2d"),viewport:vp}).promise;
-    const img=new Image();img.src=cv.toDataURL("image/jpeg",0.92);
+    const img=new Image();img.src=cv.toDataURL("image/png"); // lossless — no compression
     slot.appendChild(img);
   }catch(e){slot.style.background="#ddd";}
 }
@@ -808,17 +808,17 @@ const SFX=(()=>{
   }
   let rainTimer=null;
   function rainStart(){ensure();if(!ctx||rainOn)return;rainOn=true;
-    // gentle rain: smooth, soft continuous wash
+    // gentle rain: soft, mellow, low continuous wash
     rainGain=ctx.createGain();rainGain.gain.setValueAtTime(0.0001,ctx.currentTime);
-    rainGain.gain.linearRampToValueAtTime(0.11,ctx.currentTime+1.1);
+    rainGain.gain.linearRampToValueAtTime(0.085,ctx.currentTime+1.4);
     rainGain.connect(master);
     rainSrc=ctx.createBufferSource();rainSrc.buffer=noiseBuffer(3,"white");rainSrc.loop=true;
-    const hp=ctx.createBiquadFilter();hp.type="highpass";hp.frequency.value=600;
-    const lp=ctx.createBiquadFilter();lp.type="lowpass";lp.frequency.value=2600;
+    const hp=ctx.createBiquadFilter();hp.type="highpass";hp.frequency.value=420;
+    const lp=ctx.createBiquadFilter();lp.type="lowpass";lp.frequency.value=1700;
     const bedGain=ctx.createGain();bedGain.gain.value=1;
     // slow breathing so it feels like real, gentle rainfall
-    const lfo=ctx.createOscillator();lfo.type="sine";lfo.frequency.value=0.25;
-    const lfoGain=ctx.createGain();lfoGain.gain.value=0.18;lfo.connect(lfoGain).connect(bedGain.gain);lfo.start();
+    const lfo=ctx.createOscillator();lfo.type="sine";lfo.frequency.value=0.18;
+    const lfoGain=ctx.createGain();lfoGain.gain.value=0.22;lfo.connect(lfoGain).connect(bedGain.gain);lfo.start();
     rainSrc.connect(hp).connect(lp).connect(bedGain).connect(rainGain);rainSrc.start();
     rainLfo=lfo;
   }
