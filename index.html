@@ -69,6 +69,16 @@ a{color:inherit;text-decoration:none}
 .seg button.on{color:var(--label)}
 .seg .pill{position:absolute;top:3px;bottom:3px;background:var(--bg-elevated);border-radius:999px;
   box-shadow:var(--e1);transition:transform .35s var(--spring),width .35s var(--spring)}
+.sound-btn{width:34px;height:34px;border:0;border-radius:50%;background:var(--bg-secondary);
+  position:relative;cursor:pointer;display:grid;place-items:center;color:var(--label-2);flex:0 0 auto;
+  transition:color .2s,background .2s}
+.sound-btn:hover{color:var(--label)}
+.sound-btn svg{width:17px;height:17px;display:block}
+.sound-btn .wave{transition:opacity .2s}
+.sound-btn.muted{color:var(--label-3)}
+.sound-btn.muted .wave{opacity:0}
+.sound-btn .slash{opacity:0;transition:opacity .2s}
+.sound-btn.muted .slash{opacity:1}
 .theme-btn{width:60px;height:34px;border:0;border-radius:999px;background:var(--bg-secondary);
   position:relative;cursor:pointer}
 .theme-btn .knob{position:absolute;top:3px;left:3px;width:28px;height:28px;border-radius:50%;
@@ -363,6 +373,14 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
       <button data-lang="en" class="on">EN</button>
       <button data-lang="it">IT</button>
     </div>
+    <button class="sound-btn" id="soundBtn" aria-label="Toggle sound effects" aria-pressed="true" title="Sound effects">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M11 5 6 9H2v6h4l5 4V5z"/>
+        <path class="wave" d="M15.5 8.5a5 5 0 0 1 0 7"/>
+        <path class="wave" d="M18.5 5.5a9 9 0 0 1 0 13"/>
+        <path class="slash" d="M3 3 21 21" stroke="currentColor"/>
+      </svg>
+    </button>
     <button class="theme-btn" id="theme" aria-label="Toggle dark mode">
       <span class="knob" id="knob">☀️</span>
     </button>
@@ -463,9 +481,9 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
     <div class="sayhello-wrap">
       <button class="sayhello" id="sayhello" data-i18n="sayhello">Say Hello →</button>
       <div class="hello-pop" id="hellopop">
-        <a href="/cdn-cgi/l/email-protection#374e56445f5c425a56455e43565b4e070677505a565e5b1954585a">
+        <a href="mailto:yashkumaritaly01@gmail.com">
           <svg viewBox="0 0 24 24" fill="none" stroke="#3b3fe4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-          <span class="__cf_email__" data-cfemail="0d746c7e656678606c7f64796c61743d3c4d6a606c6461236e6260">[email&#160;protected]</span>
+          yashkumaritaly01@gmail.com
         </a>
         <a href="https://www.linkedin.com/in/yash-kumar-1yk/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="#0a66c2"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
@@ -482,9 +500,9 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   <div class="foot-inner">
     <span data-i18n="foot_role">UX/UI Designer</span>
     <div class="foot-mid">
-      <a href="/cdn-cgi/l/email-protection#60190113080b150d01120914010c19505120070d01090c4e030f0d">
+      <a href="mailto:yashkumaritaly01@gmail.com">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-        <span class="__cf_email__" data-cfemail="e990889a81829c84889b809d888590d9d8a98e84888085c78a8684">[email&#160;protected]</span>
+        yashkumaritaly01@gmail.com
       </a>
       <a href="https://www.linkedin.com/in/yash-kumar-1yk/" target="_blank" rel="noopener" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24" fill="#fff"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
@@ -495,6 +513,9 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
 </footer>
 
 <!-- MODAL -->
+<audio id="readMusic" src="uploads/songOne.mp3" loop preload="auto"></audio>
+<audio id="treeMusic" src="uploads/treeees.mp3" loop preload="auto"></audio>
+<audio id="botMusic" src="uploads/minion1.mp3" loop preload="auto"></audio>
 <div class="overlay" id="overlay">
   <div class="macwin" id="macwin" role="dialog" aria-modal="true" aria-labelledby="mtitle">
     <div class="titlebar">
@@ -510,7 +531,7 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ---------- i18n ---------- */
 const T={
   en:{nav_work:"Projects",nav_about:"About me",nav_contact:"Contact",reading:"currently reading",
@@ -690,27 +711,198 @@ if(helloBtn&&helloPop){
   helloBtn.addEventListener("click",e=>{e.stopPropagation();helloPop.classList.toggle("open");});
   document.addEventListener("click",e=>{if(!helloPop.contains(e.target)&&e.target!==helloBtn)helloPop.classList.remove("open");});
 }
+/* ---------- sound effects (Web Audio, synthesized — no asset files) ---------- */
+const SFX=(()=>{
+  let ctx=null, master=null, rainGain=null, rainSrc=null, rainOn=false, rainLfo=null;
+  let muted=localStorage.getItem("sfxMuted")==="1";
+  function ensure(){
+    if(ctx)return;
+    const AC=window.AudioContext||window.webkitAudioContext; if(!AC)return;
+    ctx=new AC();
+    master=ctx.createGain(); master.gain.value=muted?0:1; master.connect(ctx.destination);
+  }
+  function noiseBuffer(dur,type){ // type: white | brown
+    const len=Math.floor(ctx.sampleRate*dur), buf=ctx.createBuffer(1,len,ctx.sampleRate), d=buf.getChannelData(0);
+    let last=0;
+    for(let i=0;i<len;i++){const w=Math.random()*2-1;
+      if(type==="brown"){last=(last+0.02*w)/1.02;d[i]=last*3.2;}else{d[i]=w;}}
+    return buf;
+  }
+  function env(g,t0,a,peak,d){g.gain.setValueAtTime(0,t0);g.gain.linearRampToValueAtTime(peak,t0+a);g.gain.exponentialRampToValueAtTime(0.0001,t0+a+d);}
+
+  function pageFlip(){ensure();if(!ctx)return;const t=ctx.currentTime;
+    // soft book open — one gentle, low, slow paper lift
+    const src=ctx.createBufferSource();src.buffer=noiseBuffer(0.5,"white");
+    const bp=ctx.createBiquadFilter();bp.type="bandpass";bp.Q.value=0.6;
+    bp.frequency.setValueAtTime(700,t);bp.frequency.exponentialRampToValueAtTime(1500,t+0.34);
+    const lp=ctx.createBiquadFilter();lp.type="lowpass";lp.frequency.value=2200;
+    const g=ctx.createGain();env(g,t,0.05,0.26,0.34);
+    src.connect(bp).connect(lp).connect(g).connect(master);src.start(t);src.stop(t+0.5);
+  }
+  function screenCrack(){ensure();if(!ctx)return;const t=ctx.currentTime;
+    // finger tap on glass first
+    const tap=ctx.createOscillator();tap.type="sine";tap.frequency.setValueAtTime(220,t);tap.frequency.exponentialRampToValueAtTime(90,t+0.05);
+    const tg=ctx.createGain();env(tg,t,0.001,0.45,0.05);tap.connect(tg).connect(master);tap.start(t);tap.stop(t+0.08);
+    const tn=ctx.createBufferSource();tn.buffer=noiseBuffer(0.04,"white");
+    const th=ctx.createBiquadFilter();th.type="bandpass";th.frequency.value=2600;
+    const tng=ctx.createGain();env(tng,t,0.001,0.3,0.03);tn.connect(th).connect(tng).connect(master);tn.start(t);tn.stop(t+0.05);
+    // crack follows the tap
+    const tc=t+0.06;
+    // glassy ping
+    const o=ctx.createOscillator();o.type="triangle";o.frequency.setValueAtTime(2400,tc);o.frequency.exponentialRampToValueAtTime(900,tc+0.18);
+    const og=ctx.createGain();env(og,tc,0.002,0.3,0.18);o.connect(og).connect(master);o.start(tc);o.stop(tc+0.22);
+    // crackle bursts
+    for(let k=0;k<7;k++){const t0=tc+0.01+Math.random()*0.22;
+      const src=ctx.createBufferSource();src.buffer=noiseBuffer(0.05,"white");
+      const hp=ctx.createBiquadFilter();hp.type="highpass";hp.frequency.value=3000+Math.random()*2500;
+      const g=ctx.createGain();env(g,t0,0.001,0.45,0.04);
+      src.connect(hp).connect(g).connect(master);src.start(t0);src.stop(t0+0.06);}
+  }
+  function thunder(){ensure();if(!ctx)return;const t=ctx.currentTime;
+    // initial crack
+    const cs=ctx.createBufferSource();cs.buffer=noiseBuffer(0.3,"white");
+    const ch=ctx.createBiquadFilter();ch.type="highpass";ch.frequency.value=1200;
+    const cg=ctx.createGain();env(cg,t,0.004,0.5,0.25);cs.connect(ch).connect(cg).connect(master);cs.start(t);cs.stop(t+0.3);
+    // deep rumble
+    const rs=ctx.createBufferSource();rs.buffer=noiseBuffer(2.2,"brown");
+    const lp=ctx.createBiquadFilter();lp.type="lowpass";lp.frequency.setValueAtTime(380,t);lp.frequency.exponentialRampToValueAtTime(90,t+2.0);
+    const rg=ctx.createGain();rg.gain.setValueAtTime(0,t);rg.gain.linearRampToValueAtTime(0.9,t+0.12);
+    rg.gain.setValueAtTime(0.9,t+0.5);rg.gain.exponentialRampToValueAtTime(0.0001,t+2.1);
+    rs.connect(lp).connect(rg).connect(master);rs.start(t);rs.stop(t+2.2);
+  }
+  function diceFlip(){ensure();if(!ctx)return;const t=ctx.currentTime;
+    for(let k=0;k<4;k++){const t0=t+k*0.06+Math.random()*0.01;
+      const o=ctx.createOscillator();o.type="square";o.frequency.setValueAtTime(180+Math.random()*120,t0);
+      const bp=ctx.createBiquadFilter();bp.type="lowpass";bp.frequency.value=1400;
+      const g=ctx.createGain();env(g,t0,0.001,0.18,0.05);
+      o.connect(bp).connect(g).connect(master);o.start(t0);o.stop(t0+0.07);}
+  }
+  function folderFan(){ensure();if(!ctx)return;const t=ctx.currentTime;
+    // whoosh / swish \u2014 smooth noise sweep that rises then falls
+    const src=ctx.createBufferSource();src.buffer=noiseBuffer(0.4,"white");
+    const bp=ctx.createBiquadFilter();bp.type="bandpass";bp.Q.value=1.3;
+    bp.frequency.setValueAtTime(500,t);
+    bp.frequency.exponentialRampToValueAtTime(4500,t+0.16);
+    bp.frequency.exponentialRampToValueAtTime(700,t+0.34);
+    const g=ctx.createGain();
+    g.gain.setValueAtTime(0.0001,t);
+    g.gain.linearRampToValueAtTime(0.34,t+0.13);
+    g.gain.exponentialRampToValueAtTime(0.0001,t+0.36);
+    src.connect(bp).connect(g).connect(master);src.start(t);src.stop(t+0.4);
+  }
+  function fileTick(){ensure();if(!ctx)return;const t=ctx.currentTime;
+    // light paper tick when sweeping over a single file
+    const src=ctx.createBufferSource();src.buffer=noiseBuffer(0.07,"white");
+    const bp=ctx.createBiquadFilter();bp.type="bandpass";bp.Q.value=1.1;bp.frequency.value=1900;
+    const g=ctx.createGain();env(g,t,0.002,0.1,0.05);
+    src.connect(bp).connect(g).connect(master);src.start(t);src.stop(t+0.09);
+  }
+  function uiClick(){ensure();if(!ctx)return;const t=ctx.currentTime;
+    // crisp mouse click \u2014 short tick
+    const src=ctx.createBufferSource();src.buffer=noiseBuffer(0.02,"white");
+    const hp=ctx.createBiquadFilter();hp.type="highpass";hp.frequency.value=1800;
+    const g=ctx.createGain();env(g,t,0.0005,0.22,0.018);
+    src.connect(hp).connect(g).connect(master);src.start(t);src.stop(t+0.03);
+    const o=ctx.createOscillator();o.type="sine";o.frequency.setValueAtTime(950,t);o.frequency.exponentialRampToValueAtTime(420,t+0.02);
+    const og=ctx.createGain();env(og,t,0.0005,0.12,0.022);o.connect(og).connect(master);o.start(t);o.stop(t+0.04);
+  }
+  let rainTimer=null;
+  function rainStart(){ensure();if(!ctx||rainOn)return;rainOn=true;
+    // gentle rain: smooth, soft continuous wash
+    rainGain=ctx.createGain();rainGain.gain.setValueAtTime(0.0001,ctx.currentTime);
+    rainGain.gain.linearRampToValueAtTime(0.11,ctx.currentTime+1.1);
+    rainGain.connect(master);
+    rainSrc=ctx.createBufferSource();rainSrc.buffer=noiseBuffer(3,"white");rainSrc.loop=true;
+    const hp=ctx.createBiquadFilter();hp.type="highpass";hp.frequency.value=600;
+    const lp=ctx.createBiquadFilter();lp.type="lowpass";lp.frequency.value=2600;
+    const bedGain=ctx.createGain();bedGain.gain.value=1;
+    // slow breathing so it feels like real, gentle rainfall
+    const lfo=ctx.createOscillator();lfo.type="sine";lfo.frequency.value=0.25;
+    const lfoGain=ctx.createGain();lfoGain.gain.value=0.18;lfo.connect(lfoGain).connect(bedGain.gain);lfo.start();
+    rainSrc.connect(hp).connect(lp).connect(bedGain).connect(rainGain);rainSrc.start();
+    rainLfo=lfo;
+  }
+  function rainStop(){if(!ctx||!rainOn)return;rainOn=false;
+    if(rainTimer){clearTimeout(rainTimer);rainTimer=null;}
+    const g=rainGain,s=rainSrc,l=rainLfo;const t=ctx.currentTime;
+    if(g){g.gain.cancelScheduledValues(t);g.gain.setValueAtTime(g.gain.value,t);g.gain.linearRampToValueAtTime(0.0001,t+0.5);}
+    setTimeout(()=>{try{s&&s.stop();}catch(e){}try{l&&l.stop();}catch(e){}try{g&&g.disconnect();}catch(e){}},560);
+    rainGain=null;rainSrc=null;rainLfo=null;
+  }
+  function setMuted(m){muted=m;localStorage.setItem("sfxMuted",m?"1":"0");
+    if(master)master.gain.value=m?0:1; if(m)rainStop();}
+  return{pageFlip,screenCrack,thunder,diceFlip,folderFan,fileTick,uiClick,rainStart,rainStop,setMuted,
+    isMuted:()=>muted, resume:()=>{ensure();if(ctx&&ctx.state==="suspended")ctx.resume();}};
+})();
+
+/* mute toggle */
+const soundBtn=document.getElementById("soundBtn");
+if(soundBtn){
+  if(SFX.isMuted())soundBtn.classList.add("muted");
+  soundBtn.setAttribute("aria-pressed",String(!SFX.isMuted()));
+  soundBtn.addEventListener("click",()=>{const next=!SFX.isMuted();SFX.setMuted(next);
+    soundBtn.classList.toggle("muted",next);soundBtn.setAttribute("aria-pressed",String(!next));
+    if(next){const m=document.getElementById("readMusic");if(m)m.pause();const tm=document.getElementById("treeMusic");if(tm)tm.pause();const bm=document.getElementById("botMusic");if(bm)bm.pause();}});
+}
+/* unlock audio on first gesture */
+["pointerdown","keydown"].forEach(ev=>window.addEventListener(ev,()=>SFX.resume(),{once:true}));
+/* generic click sound on any clickable element (except hero props with their own sounds) */
+document.addEventListener("click",e=>{
+  const el=e.target.closest('a,button,.file,.pill,.chip,.lights span,.nav-logo,[role="button"]');
+  if(!el)return;
+  if(el.closest("#bookProp,#phoneProp,#diceProp,#cloudProp"))return;
+  SFX.uiClick();
+});
+
+/* hover music on the boy-reading image */
+const readMusic=document.getElementById("readMusic");
+const boyChip=document.querySelector(".chip.green");
+if(readMusic&&boyChip){
+  readMusic.volume=0.48;
+  boyChip.addEventListener("mouseenter",()=>{if(SFX.isMuted())return;SFX.resume();readMusic.play().catch(()=>{});});
+  boyChip.addEventListener("mouseleave",()=>readMusic.pause());
+}
+/* hover music on the tree image */
+const treeMusic=document.getElementById("treeMusic");
+const treeChip=document.querySelector(".chip.field");
+if(treeMusic&&treeChip){
+  treeMusic.volume=0.6;
+  treeChip.addEventListener("mouseenter",()=>{if(SFX.isMuted())return;SFX.resume();treeMusic.play().catch(()=>{});});
+  treeChip.addEventListener("mouseleave",()=>treeMusic.pause());
+}
+/* hover music on the bot image */
+const botMusic=document.getElementById("botMusic");
+const botChip=document.querySelector(".chip.bot");
+if(botMusic&&botChip){
+  botMusic.volume=0.6;
+  botChip.addEventListener("mouseenter",()=>{if(SFX.isMuted())return;SFX.resume();botMusic.play().catch(()=>{});});
+  botChip.addEventListener("mouseleave",()=>botMusic.pause());
+}
+
 const phoneProp=document.getElementById("phoneProp");
-if(phoneProp){const togglePhone=()=>phoneProp.classList.toggle("broken");
+if(phoneProp){const togglePhone=()=>{phoneProp.classList.toggle("broken");SFX.screenCrack();};
   phoneProp.addEventListener("click",togglePhone);
   phoneProp.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();togglePhone();}});}
 const bookProp=document.getElementById("bookProp");
-if(bookProp){const toggleBook=()=>bookProp.classList.toggle("opened");
+if(bookProp){const toggleBook=()=>{bookProp.classList.toggle("opened");SFX.pageFlip();};
   bookProp.addEventListener("click",toggleBook);
   bookProp.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();toggleBook();}});}
 const diceProp=document.getElementById("diceProp");
 if(diceProp){const diceImg=diceProp.querySelector(".dice-img");
-  const roll=()=>{diceImg.classList.remove("bounce");void diceImg.offsetWidth;diceImg.classList.add("bounce");};
+  const roll=()=>{diceImg.classList.remove("bounce");void diceImg.offsetWidth;diceImg.classList.add("bounce");SFX.diceFlip();};
+  diceProp.addEventListener("mouseenter",()=>SFX.diceFlip());
   diceImg.addEventListener("animationend",e=>{if(e.animationName==="diceBounce")diceImg.classList.remove("bounce");});
   diceProp.addEventListener("click",roll);
   diceProp.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();roll();}});}
 const cloudProp=document.getElementById("cloudProp");
 if(cloudProp){const storm=cloudProp.querySelector(".storm");
-  const strike=()=>{storm.classList.remove("show");void storm.offsetWidth;storm.classList.add("show");};
+  const strike=()=>{storm.classList.remove("show");void storm.offsetWidth;storm.classList.add("show");SFX.thunder();};
   storm.addEventListener("animationend",()=>storm.classList.remove("show"));
   cloudProp.addEventListener("click",strike);
+  cloudProp.addEventListener("mouseenter",()=>SFX.rainStart());
+  cloudProp.addEventListener("mouseleave",()=>SFX.rainStop());
   cloudProp.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();strike();}});}
-document.querySelectorAll(".file").forEach(el=>el.addEventListener("click",e=>{e.stopPropagation();if(el.classList.contains("wip"))return;openFile(el.dataset.file);}));
+document.querySelectorAll(".file").forEach(el=>el.addEventListener("click",e=>{e.stopPropagation();SFX.uiClick();if(el.classList.contains("wip"))return;openFile(el.dataset.file);}));
 document.getElementById("close").onclick=closeFile;
 document.getElementById("zoom").onclick=()=>macwin.classList.toggle("expanded");
 overlay.addEventListener("click",e=>{if(e.target===overlay)closeFile();});
@@ -718,6 +910,7 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape")closeFile();});
 
 /* ---------- folder tap (touch) ---------- */
 const folder=document.getElementById("folder");
+folder.addEventListener("mouseenter",()=>SFX.folderFan());
 folder.addEventListener("click",e=>{if(e.target.closest(".file"))return;folder.classList.toggle("open");});
 folder.addEventListener("keydown",e=>{if(e.key==="Enter")folder.classList.toggle("open");});
 
