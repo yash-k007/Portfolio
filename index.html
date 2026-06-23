@@ -8,8 +8,7 @@
 <link rel="apple-touch-icon" href="slides/logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link href="https://fonts.cdnfonts.com/css/nohemi" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <style>
 :root{
@@ -36,11 +35,11 @@ html[data-theme="dark"]{
   --e1:0 1px 2px rgba(0,0,0,.4); --e2:0 8px 24px rgba(0,0,0,.5); --e3:0 24px 60px rgba(0,0,0,.6);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%}
 body{
   background:var(--bg); color:var(--label); font-family:var(--font-display); font-weight:500;
   -webkit-font-smoothing:antialiased; line-height:1.45;
-  transition:background .35s ease,color .35s ease; overflow-x:hidden;
+  transition:background .35s ease,color .35s ease; overflow-x:hidden; max-width:100%; width:100%;
 }
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1200px;margin:0 auto;padding:0 clamp(16px,5vw,72px)}
@@ -158,8 +157,42 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   18%{opacity:1;transform:translateX(-50%) scale(1.18);filter:drop-shadow(0 0 16px rgba(130,180,255,.95)) drop-shadow(0 0 30px rgba(255,224,40,.7))}
   45%{transform:translateX(-50%) scale(1);filter:drop-shadow(0 0 12px rgba(130,180,255,.85)) drop-shadow(0 0 22px rgba(255,224,40,.6))}
   100%{opacity:0;transform:translateX(-50%) scale(1);filter:drop-shadow(0 0 0 rgba(120,170,255,0))}}
-@media(max-width:900px){.prop.die,.prop.win{display:none}}
-@media(max-width:620px){.prop{display:none!important}}
+/* ---- responsive: keep the interactive props VISIBLE, just retuck them ---- */
+@media(max-width:900px){
+  .prop.book{left:-2px;top:104px}
+  .prop.phone{right:-2px;top:118px}
+  .prop.win{left:-10px;top:300px}
+  .prop.die{right:0;top:316px}
+  .cloud-img{width:clamp(110px,15vw,150px)}
+}
+@media(max-width:620px){
+  /* navbar: wrap links to a second row so everything stays visible */
+  .nav{padding:10px 8px 0}
+  .nav-inner{flex-wrap:wrap;justify-content:center;gap:8px 14px;padding:9px 14px;max-width:calc(100% - 16px)}
+  .nav-logo{margin-right:0}
+  .nav-links{order:3;flex-basis:100%;justify-content:center;gap:22px}
+  .nav-tools{margin-left:0}
+  .hero{padding-top:26px}
+  .h-title{font-size:clamp(46px,15vw,78px);margin:14px 0 6px}
+  .folder-stage{height:540px}
+  .prop{animation-duration:8s}
+  /* symmetric, shifted inward off the screen's rounded corners */
+  .prop.book{left:10px;top:110px}
+  .book-inner{width:60px;height:62px}
+  .cr-callout{font-size:10px;padding:6px 10px;border-radius:12px}
+  .prop.phone{width:54px;height:80px;right:12px;top:108px}
+  .prop.win{left:8px;top:212px}
+  .cloud-img{width:100px}
+  .prop.die{right:16px;top:216px}
+  .dice-img{height:48px}
+}
+@media(max-width:380px){
+  .prop.book{top:104px}
+  .prop.phone{top:104px}
+  .prop.win{top:198px;left:6px}
+  .cloud-img{width:92px}
+  .prop.die{top:202px;right:12px}
+}
 
 /* ---------- FOLDER ---------- */
 .folder-stage{position:relative;height:600px;display:flex;align-items:flex-end;justify-content:center;
@@ -227,7 +260,7 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   display:flex;flex-wrap:wrap;align-items:center;gap:.18em .28em;justify-content:flex-start}
 .statement .it{font-size:.92em}
 .chip{display:inline-flex;align-items:center;justify-content:center;border-radius:18px;color:#fff;
-  width:clamp(80px,12vw,150px);height:clamp(54px,8vw,86px);font-size:13px;font-weight:700;box-shadow:var(--e1);
+  width:clamp(80px,12vw,150px);aspect-ratio:150/86;height:auto;font-size:13px;font-weight:700;box-shadow:var(--e1);
   cursor:pointer;transition:transform .3s var(--spring);overflow:hidden}
 .chip-img{width:100%;height:100%;object-fit:cover;display:block}
 .chip:hover{transform:translateY(-5px) scale(1.03)}
@@ -358,6 +391,9 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
 </style>
 </head>
 <body>
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="20" fill="#3B3FE4"/><text x="50" y="64" font-family="Hanken Grotesk,sans-serif" font-size="44" font-weight="800" fill="#fff" text-anchor="middle">Y.</text></svg>
+</template>
 <h2 class="sr-only">Interactive prototype of the YASH iOS Core portfolio: a folder of project files, toolbox, and contact, with light/dark and EN/IT toggles.</h2>
 <!-- NAV -->
 <nav class="nav"><div class="nav-inner">
@@ -417,7 +453,7 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
       <div class="files">
         <article class="file dark wip" data-file="dark"><span class="kic" data-i18n="f_explore">EXPLORATION</span><h4 data-i18n="f1">Dark Mode Study</h4><span class="meta">[ Work in progress ]</span></article>
         <article class="file wip" data-file="journey"><span class="kic" data-i18n="f_research">RESEARCH</span><h4 data-i18n="f2">User Journey Map</h4><span class="meta">[ Work in progress ]</span></article>
-        <article class="file" data-file="bank"><span class="kic">CASE STUDY</span><h4>Libraccio.it Redesign</h4><span class="meta">UX/UI · 2026</span></article>
+        <article class="file" data-file="bank"><span class="kic">CASE STUDY</span><h4>Libraccio.it Redesign</h4><span class="meta">UX/UI · 2024</span></article>
         <article class="file ghost wip" data-file="wires"><span class="kic" data-i18n="f_wire">WIREFRAMES</span><h4 data-i18n="f4">Wireframes</h4><span class="meta">[ Work in progress ]</span></article>
         <article class="file blue" data-file="figma"><span class="kic">MOBILE APP</span><h4>VivoVero</h4><span class="meta" style="color:rgba(255,255,255,.7)">Where ever you go you find it.</span></article>
       </div>
@@ -481,9 +517,9 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
     <div class="sayhello-wrap">
       <button class="sayhello" id="sayhello" data-i18n="sayhello">Say Hello →</button>
       <div class="hello-pop" id="hellopop">
-        <a href="/cdn-cgi/l/email-protection#ed948c9e858698808c9f84998c8194dddcad8a808c8481c38e8280">
+        <a href="/cdn-cgi/l/email-protection#81f8e0f2e9eaf4ece0f3e8f5e0edf8b1b0c1e6ece0e8edafe2eeec">
           <svg viewBox="0 0 24 24" fill="none" stroke="#3b3fe4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-          <span class="__cf_email__" data-cfemail="f48d95879c9f819995869d8095988dc4c5b49399959d98da979b99">email</span>
+          <span class="__cf_email__" data-cfemail="82fbe3f1eae9f7efe3f0ebf6e3eefbb2b3c2e5efe3ebeeace1edef">[email&#160;protected]</span>
         </a>
         <a href="https://www.linkedin.com/in/yash-kumar-1yk/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="#0a66c2"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
@@ -500,9 +536,9 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   <div class="foot-inner">
     <span data-i18n="foot_role">UX/UI Designer</span>
     <div class="foot-mid">
-      <a href="/cdn-cgi/l/email-protection#344d55475c5f415955465d4055584d0405745359555d581a575b59">
+      <a href="/cdn-cgi/l/email-protection#b7ced6c4dfdcc2dad6c5dec3d6dbce8786f7d0dad6dedb99d4d8da">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-        <span class="__cf_email__" data-cfemail="f28b93819a99879f93809b86939e8bc2c3b2959f939b9edc919d9f">email</span>
+        <span class="__cf_email__" data-cfemail="3940584a51524c54584b504d5855400908795e54585055175a5654">[email&#160;protected]</span>
       </a>
       <a href="https://www.linkedin.com/in/yash-kumar-1yk/" target="_blank" rel="noopener" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24" fill="#fff"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
@@ -576,13 +612,13 @@ fillTrack("row1",r1);fillTrack("row2",r2);
 
 /* ---------- case-study section labels ---------- */
 const SEC={
-  en:{role:"UX/UI Design · 2026 · Figma, After Effects",
+  en:{role:"UX/UI Design · 2024 · Figma, After Effects",
     challenge:"The challenge",process:"Process & exploration",outcome:"Outcome",
     cp:"Framing the real problem before touching a single pixel — talking to users, mapping the journey, and finding where the friction actually lives.",
     pp:"Iterating in the open: low-fidelity flows, quick prototypes, and constant testing until the simplest version that works reveals itself.",
     op:"The shipped result — measured, validated, and handed off with documentation engineers can build from directly.",
     end:"End of project — scroll up to revisit any section."},
-  it:{role:"UX/UI Design · 2026 · Figma, After Effects",
+  it:{role:"UX/UI Design · 2024 · Figma, After Effects",
     challenge:"La sfida",process:"Processo ed esplorazione",outcome:"Risultato",
     cp:"Inquadrare il problema reale prima di toccare un solo pixel — parlare con gli utenti, mappare il percorso e trovare dove nasce davvero l'attrito.",
     pp:"Iterare allo scoperto: flussi a bassa fedeltà, prototipi rapidi e test continui finché emerge la versione più semplice che funziona.",
@@ -598,7 +634,7 @@ const FILES={
   journey:{en:["RESEARCH","User Journey Map"],it:["RICERCA","Mappa del Percorso Utente"],
     body:["Mapping the end-to-end journey of a first-time mobile-banking user, from onboarding anxiety to the relief of a completed transfer.",
       "Pain points, emotional highs and lows, and opportunity areas, synthesized from 12 interviews."]},
-  bank:{en:["CASE STUDY · 2026","Minimal Banking App"],it:["CASE STUDY · 2026","App Bancaria Minimale"],
+  bank:{en:["CASE STUDY · 2024","Minimal Banking App"],it:["CASE STUDY · 2024","App Bancaria Minimale"],
     body:["A $12K freelance engagement: redesigning a regional bank's mobile app around clarity and trust.",
       "The brief was 'make money feel calm.' The result cut the transfer flow from 7 taps to 3 and lifted task-success in usability testing to 94%."]},
   wires:{en:["WIREFRAMES","Wireframes"],it:["WIREFRAME","Wireframe"],
