@@ -517,9 +517,9 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
     <div class="sayhello-wrap">
       <button class="sayhello" id="sayhello" data-i18n="sayhello">Say Hello →</button>
       <div class="hello-pop" id="hellopop">
-        <a href="mailto:yashkumaritaly01@gmail.com">
+        <a href="/cdn-cgi/l/email-protection#7d041c0e151608101c0f14091c11044d4c3d1a101c1411531e1210">
           <svg viewBox="0 0 24 24" fill="none" stroke="#3b3fe4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-          yashkumaritaly01@gmail.com
+          <span class="__cf_email__" data-cfemail="4e372f3d26253b232f3c273a2f22377e7f0e29232f2722602d2123">[email&#160;protected]</span>
         </a>
         <a href="https://www.linkedin.com/in/yash-kumar-1yk/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="#0a66c2"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
@@ -536,9 +536,9 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   <div class="foot-inner">
     <span data-i18n="foot_role">UX/UI Designer</span>
     <div class="foot-mid">
-      <a href="mailto:yashkumaritaly01@gmail.com">
+      <a href="/cdn-cgi/l/email-protection#cab3abb9a2a1bfa7abb8a3beaba6b3fafb8aada7aba3a6e4a9a5a7">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-        yashkumaritaly01@gmail.com
+        <span class="__cf_email__" data-cfemail="6f160e1c07041a020e1d061b0e03165f5e2f08020e0603410c0002">[email&#160;protected]</span>
       </a>
       <a href="https://www.linkedin.com/in/yash-kumar-1yk/" target="_blank" rel="noopener" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24" fill="#fff"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
@@ -567,7 +567,7 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ---------- i18n ---------- */
 const T={
   en:{nav_work:"Projects",nav_about:"About me",nav_contact:"Contact",reading:"currently reading",
@@ -707,21 +707,53 @@ const PDF_PROJECTS={
   figma: {title:"VivoVero \u2014 Mobile App", url:"slides/VivoVero.pdf",
     overlays:[{page:17, left:"77.8%", top:"44.4%", width:"10.4%", height:"7%", href:PROTO_URL, title:"Open prototype"}]}
 };
-async function openPdfProject(cfg){
-  mtitle.textContent=cfg.title;
-  mbody.classList.add("pdfmode");
-  mbody.innerHTML='<div class="pdfdoc" id="pdfdoc"><div class="pdfloading">Loading\u2026</div></div>';
-  mbody.scrollTop=0;portalOverlay();overlay.classList.add("show");
-  let pdf;
-  try{pdf=await loadPdf(cfg.url);}catch(e){const h=document.getElementById("pdfdoc");if(h)h.innerHTML='<div class="pdfloading">Could not load the document.</div>';return;}
-  const host=document.getElementById("pdfdoc");if(!host)return;host.innerHTML="";
+/* Pre-render each PDF case study once into a detached, fully-painted node,
+   so opening a project injects the finished document with zero loading gap. */
+const pdfHostCache={};
+async function buildPdfHost(cfg){
+  const pdf=await loadPdf(cfg.url);
+  const host=document.createElement("div");host.className="pdfdoc";
   const slots=[];
   for(let i=1;i<=pdf.numPages;i++){
     const slot=document.createElement("div");slot.className="pdfpage";slot.dataset.page=i;
     host.appendChild(slot);slots.push(slot);
   }
-  pdfQueue=pdfQueue.then(()=>addPdfLinks(pdf,slots,cfg)).catch(()=>{});
-  for(let i=1;i<=pdf.numPages;i++) enqueueRender(pdf,i,slots[i-1]);
+  await addPdfLinks(pdf,slots,cfg);
+  for(let i=1;i<=pdf.numPages;i++){ await renderPdfPage(pdf,i,slots[i-1]); }
+  return host;
+}
+function prewarmPdf(cfg){
+  let entry=pdfHostCache[cfg.url];
+  if(entry)return entry.promise;
+  entry={host:null,promise:null};
+  entry.promise=buildPdfHost(cfg).then(h=>{entry.host=h;return h;}).catch(()=>null);
+  pdfHostCache[cfg.url]=entry;
+  return entry.promise;
+}
+function prewarmAllPdfs(){
+  const start=()=>{ Object.values(PDF_PROJECTS).forEach(cfg=>prewarmPdf(cfg)); };
+  if("requestIdleCallback" in window) requestIdleCallback(start,{timeout:2500});
+  else setTimeout(start,800);
+}
+async function openPdfProject(cfg){
+  mtitle.textContent=cfg.title;
+  mbody.classList.add("pdfmode");
+  const entry=pdfHostCache[cfg.url];
+  // already pre-rendered → drop it in instantly, no loading state
+  if(entry&&entry.host){
+    mbody.innerHTML="";mbody.appendChild(entry.host);
+    mbody.scrollTop=0;portalOverlay();overlay.classList.add("show");
+    return;
+  }
+  // not warm yet → show the modal immediately, then swap in the finished doc
+  mbody.innerHTML='<div class="pdfdoc" id="pdfdoc"><div class="pdfloading">Loading\u2026</div></div>';
+  mbody.scrollTop=0;portalOverlay();overlay.classList.add("show");
+  const host=await prewarmPdf(cfg);
+  if(host){
+    if(mbody.classList.contains("pdfmode")){ mbody.innerHTML="";mbody.appendChild(host); }
+  }else{
+    const h=document.getElementById("pdfdoc");if(h)h.innerHTML='<div class="pdfloading">Could not load the document.</div>';
+  }
 }
 function openFile(key){
   if(PDF_PROJECTS[key])return openPdfProject(PDF_PROJECTS[key]);
@@ -967,6 +999,7 @@ langSeg.querySelectorAll("button").forEach(b=>b.onclick=()=>{
 /* init */
 applyLang();setTimeout(moveLangPill,60);
 window.addEventListener("resize",moveLangPill);
+prewarmAllPdfs();
 </script>
 </body>
 </html>
