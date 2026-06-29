@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Yash's Portfolio</title>
-<link rel="icon" type="image/jpg" href="slides/tree-hd.jpg" />
-<link rel="apple-touch-icon" href="slides/tree-hd.jpg" />
+<title>YASH. — iOS Core Portfolio (Prototype)</title>
+<link rel="icon" type="image/png" href="slides/logo.png" />
+<link rel="apple-touch-icon" href="slides/logo.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -91,8 +91,11 @@ html[data-theme="dark"] .theme-btn .knob{transform:translateX(26px)}
 .tag{display:inline-flex;align-items:center;gap:7px;background:var(--bg-elevated);border:1px solid var(--separator);
   box-shadow:var(--e1);font-weight:600;font-size:13px;padding:8px 16px;border-radius:999px}
 .tag .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
-.h-title{font-family:var(--font-serif);font-weight:600;letter-spacing:-.02em;line-height:.92;
-  font-size:clamp(56px,11vw,145px);margin:18px 0 8px}
+.h-title{font-family:var(--font-display);font-weight:700;letter-spacing:-.04em;line-height:.95;
+  font-size:clamp(44px,9.35vw,120px);margin:120px 0 8px;text-align:center;
+  display:flex;flex-direction:column;align-items:center}
+.h-title .h-sub{font-family:var(--font-display);font-size:clamp(17px,2.72vw,34px);font-weight:500;letter-spacing:-.01em;
+  line-height:1.1;margin-top:.18em;color:var(--muted,inherit);opacity:.8}
 /* floating props */
 .prop{position:absolute;border-radius:18px;display:grid;place-items:center;box-shadow:var(--e2);
   animation:float 7s ease-in-out infinite;color:#fff}
@@ -173,7 +176,8 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   .nav-links{order:3;flex-basis:100%;justify-content:center;gap:22px}
   .nav-tools{margin-left:0}
   .hero{padding-top:26px}
-  .h-title{font-size:clamp(46px,15vw,78px);margin:14px 0 6px}
+  .h-title{font-size:clamp(46px,15vw,78px);margin:30px 0 6px}
+  .h-title .h-sub{font-size:clamp(17px,5vw,26px)}
   .folder-stage{height:540px}
   .prop{animation-duration:8s}
   /* symmetric, shifted inward off the screen's rounded corners */
@@ -208,6 +212,7 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
 .file .big{font-size:30px;font-weight:800;color:var(--accent);margin-top:6px}
 .file.dark{background:#4A4A4A;color:#fff;border-color:#5a5a5a}
 .file.dark .kic{color:rgba(255,255,255,.45)}
+.file.dark .meta{color:rgba(255,255,255,.45)}
 .file.blue{background:var(--accent);color:#fff;border-color:transparent}
 .file.blue .kic{color:rgba(255,255,255,.6)}
 .file.ghost{opacity:.55}
@@ -380,6 +385,8 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
 
 /* ---- PDF case-study document viewer ---- */
 .macbody.pdfmode{padding:0;background:#26262b}
+.macbody.iframemode{padding:0;background:#14100E;overflow:hidden}
+.macbody.iframemode iframe{width:100%;height:100%;border:0;display:block}
 .pdfdoc{display:flex;flex-direction:column;gap:16px;padding:18px}
 .pdfpage{position:relative;width:100%;aspect-ratio:16/9;background:#3a3a40;border-radius:10px;overflow:hidden;display:block;box-shadow:0 6px 22px rgba(0,0,0,.32)}
 .pdfpage img{width:100%;height:100%;display:block}
@@ -446,12 +453,12 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
     <span class="rain" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
     <span class="storm" aria-hidden="true">⚡</span>
   </span>
-  <h1 class="h-title">Portfolio</h1>
+  <h1 class="h-title">Yash Kumar<span class="h-sub">CS grad turned UX/UI Designer</span></h1>
   <div class="folder-stage">
     <div class="folder" id="folder" tabindex="0" role="button" aria-label="Open portfolio folder">
       <span class="hint" data-i18n="hint">Hover / tap to open the folder</span>
       <div class="files">
-        <article class="file dark wip" data-file="dark"><span class="kic" data-i18n="f_explore">EXPLORATION</span><h4 data-i18n="f1">Dark Mode Study</h4><span class="meta">[ Work in progress ]</span></article>
+        <article class="file dark" data-file="dark"><span class="kic" data-i18n="f_explore">UX/UI CHALLENGE</span><h4 data-i18n="f1">LOCKIN</h4><span class="meta">Fitness App Design</span></article>
         <article class="file wip" data-file="journey"><span class="kic" data-i18n="f_research">RESEARCH</span><h4 data-i18n="f2">User Journey Map</h4><span class="meta">[ Work in progress ]</span></article>
         <article class="file" data-file="bank"><span class="kic">CASE STUDY</span><h4>Libraccio.it Redesign</h4><span class="meta">UX/UI · 2024</span></article>
         <article class="file ghost wip" data-file="wires"><span class="kic" data-i18n="f_wire">WIREFRAMES</span><h4 data-i18n="f4">Wireframes</h4><span class="meta">[ Work in progress ]</span></article>
@@ -491,7 +498,7 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
 <section class="wrap" id="about">
   <h3 class="sec-h">Who <span class="it" data-i18n="who_q">am I?</span></h3>
   <div class="card who">
-    <p data-i18n-html="who_body">A <a href="#">CS grad turned UX/UI Designer</a> — I bridge the gap between logic and creativity. After an internship building front-end mobile app, I realised the most dangerous thing I could be was a designer who actually knows how to code.</p>
+    <p data-i18n-html="who_body">A <a href="#">CS grad turned UX/UI Designer</a> — I bridge the gap between logic and creativity. After a front-end internship building mobile apps, I realised the most dangerous thing I could be was a designer who actually knows how to code.</p>
   </div>
 </section>
 
@@ -517,9 +524,9 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
     <div class="sayhello-wrap">
       <button class="sayhello" id="sayhello" data-i18n="sayhello">Say Hello →</button>
       <div class="hello-pop" id="hellopop">
-        <a href="/cdn-cgi/l/email-protection#7d041c0e151608101c0f14091c11044d4c3d1a101c1411531e1210">
+        <a href="mailto:yashkumaritaly01@gmail.com">
           <svg viewBox="0 0 24 24" fill="none" stroke="#3b3fe4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-          <span class="__cf_email__" data-cfemail="4e372f3d26253b232f3c273a2f22377e7f0e29232f2722602d2123">[email&#160;protected]</span>
+          yashkumaritaly01@gmail.com
         </a>
         <a href="https://www.linkedin.com/in/yash-kumar-1yk/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="#0a66c2"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
@@ -536,9 +543,9 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   <div class="foot-inner">
     <span data-i18n="foot_role">UX/UI Designer</span>
     <div class="foot-mid">
-      <a href="/cdn-cgi/l/email-protection#cab3abb9a2a1bfa7abb8a3beaba6b3fafb8aada7aba3a6e4a9a5a7">
+      <a href="mailto:yashkumaritaly01@gmail.com">
         <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-        <span class="__cf_email__" data-cfemail="6f160e1c07041a020e1d061b0e03165f5e2f08020e0603410c0002">[email&#160;protected]</span>
+        yashkumaritaly01@gmail.com
       </a>
       <a href="https://www.linkedin.com/in/yash-kumar-1yk/" target="_blank" rel="noopener" aria-label="LinkedIn">
         <svg viewBox="0 0 24 24" fill="#fff"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
@@ -564,23 +571,24 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
       <span style="width:54px"></span>
     </div>
     <div class="macbody" id="mbody"></div>
+    <div id="iframehost" style="display:none;flex:1;min-height:0;background:#14100E;"></div>
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ---------- i18n ---------- */
 const T={
   en:{nav_work:"Projects",nav_about:"About me",nav_contact:"Contact",reading:"currently reading",
-    hint:"Hover / tap to open the folder",f_explore:"EXPLORATION",f_research:"RESEARCH",f_case:"CASE STUDY",
-    f_wire:"WIREFRAMES",f_tool:"TOOL",f1:"Dark Mode Study",f2:"User Journey Map",f3:"Minimal Banking App",f4:"Wireframes",
+    hint:"Hover / tap to open the folder",f_explore:"UX/UI CHALLENGE",f_research:"RESEARCH",f_case:"CASE STUDY",
+    f_wire:"WIREFRAMES",f_tool:"TOOL",f1:"LOCKIN",f2:"User Journey Map",f3:"Minimal Banking App",f4:"Wireframes",
     st1:"THINKING OUTSIDE",st_of:"of the",st_bot:"BOT",who_q:"am I?",
-    who_body:'A <a href="#">CS grad turned UX/UI Designer</a> — I bridge the gap between logic and creativity. After an internship in building front-end mobile app, I realised the most dangerous thing I could be was a designer who actually knows how to code.',
+    who_body:'A <a href="#">CS grad turned UX/UI Designer</a> — I bridge the gap between logic and creativity. After a front-end internship building mobile apps, I realised the most dangerous thing I could be was a designer who actually knows how to code.',
     tb_title:"THE TOOLBOX",tb_sub:"Tools and technical craft I work with every day",skills_w:"skills",
     based:"Based in",getintouch:"GET IN TOUCH",cta_big:"Leave me a message",
     sayhello:"Say Hello →",foot_role:"UX/UI Designer",foot_yr:"Milan · 2026",foot_tag:"Thinking outside of the Bot"},
   it:{nav_work:"Progetti",nav_about:"Chi sono",nav_contact:"Contatti",reading:"sto leggendo",
-    hint:"Passa / tocca per aprire la cartella",f_explore:"ESPLORAZIONE",f_research:"RICERCA",f_case:"CASE STUDY",
-    f_wire:"WIREFRAME",f_tool:"STRUMENTO",f1:"Studio Dark Mode",f2:"Mappa del Percorso Utente",f3:"App Bancaria Minimale",f4:"Wireframe",
+    hint:"Passa / tocca per aprire la cartella",f_explore:"UX/UI CHALLENGE",f_research:"RICERCA",f_case:"CASE STUDY",
+    f_wire:"WIREFRAME",f_tool:"STRUMENTO",f1:"LOCKIN",f2:"Mappa del Percorso Utente",f3:"App Bancaria Minimale",f4:"Wireframe",
     st1:"PENSARE FUORI",st_of:"dagli",st_bot:"SCHEMI",who_q:"sono?",
     who_body:'Un <a href="#">laureato in informatica diventato UX/UI Designer</a> — colmo il divario tra logica e creatività. Dopo uno stage front-end sviluppando app mobile, ho capito che la cosa più pericolosa che potevo essere era un designer che sa davvero programmare.',
     tb_title:"LA CASSETTA DEGLI ATTREZZI",tb_sub:"Strumenti e tecnica con cui lavoro ogni giorno",skills_w:"trasversali",
@@ -755,7 +763,38 @@ async function openPdfProject(cfg){
     const h=document.getElementById("pdfdoc");if(h)h.innerHTML='<div class="pdfloading">Could not load the document.</div>';
   }
 }
+const IFRAME_PROJECTS={
+  dark:{title:"Lockin \u2014 Fitness app UI", url:"LOCKIN Case Study.html"}
+};
+const iframehost=document.getElementById("iframehost");
+/* Pre-warm each iframe project once inside a hidden host, so the bundle is
+   fully unpacked and painted before the user clicks. The iframe is never
+   re-parented (which would force a reload) — we just show/hide its host. */
+const iframeCache={};
+function prewarmIframe(cfg){
+  if(iframeCache[cfg.url])return iframeCache[cfg.url];
+  const f=document.createElement("iframe");
+  f.title=cfg.title;
+  f.style.cssText="width:100%;height:100%;border:0;display:block;";
+  f.src=cfg.url;
+  iframehost.appendChild(f);
+  iframeCache[cfg.url]=f;
+  return f;
+}
+function prewarmAllIframes(){
+  const start=()=>{Object.values(IFRAME_PROJECTS).forEach(cfg=>prewarmIframe(cfg));};
+  if("requestIdleCallback" in window) requestIdleCallback(start,{timeout:1500});
+  else setTimeout(start,300);
+}
+function openIframeProject(cfg){
+  mtitle.textContent=cfg.title;
+  prewarmIframe(cfg);
+  mbody.style.display="none";
+  iframehost.style.display="block";
+  portalOverlay();overlay.classList.add("show");
+}
 function openFile(key){
+  if(IFRAME_PROJECTS[key])return openIframeProject(IFRAME_PROJECTS[key]);
   if(PDF_PROJECTS[key])return openPdfProject(PDF_PROJECTS[key]);
   const f=FILES[key];if(!f)return;const t=f[lang];const s=SEC[lang];const cv=COVER[key]||"#302F2B";
   mtitle.textContent=t[1];
@@ -773,7 +812,7 @@ function openFile(key){
     `<div class="bh-foot">${s.end}</div>`;
   mbody.scrollTop=0;portalOverlay();overlay.classList.add("show");
 }
-function closeFile(){overlay.classList.remove("show");macwin.classList.remove("expanded");mbody.classList.remove("pdfmode");}
+function closeFile(){overlay.classList.remove("show");macwin.classList.remove("expanded");mbody.classList.remove("pdfmode");mbody.classList.remove("iframemode");mbody.style.display="";iframehost.style.display="none";}
 const helloBtn=document.getElementById("sayhello"),helloPop=document.getElementById("hellopop");
 if(helloBtn&&helloPop){
   helloBtn.addEventListener("click",e=>{e.stopPropagation();helloPop.classList.toggle("open");});
@@ -1000,6 +1039,7 @@ langSeg.querySelectorAll("button").forEach(b=>b.onclick=()=>{
 applyLang();setTimeout(moveLangPill,60);
 window.addEventListener("resize",moveLangPill);
 prewarmAllPdfs();
+prewarmAllIframes();
 </script>
 </body>
 </html>
