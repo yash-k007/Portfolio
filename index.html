@@ -1148,7 +1148,7 @@ if(lampProp){const toggle=()=>{lampProp.classList.toggle("lit");SFX.uiClick();};
   lampProp.querySelector(".lamp-hit").addEventListener("click",toggle);
   lampProp.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();toggle();}});}
 const bikeProp=document.getElementById("bikeProp");
-if(bikeProp){const honk=new Audio("uploads/ducati-honk.mp3");honk.preload="auto";honk.volume=0.5;
+if(bikeProp){const honk=new Audio("ducati-honk.mp3");honk.preload="auto";honk.volume=0.5;
   const tog=()=>{bikeProp.classList.toggle("lit");try{honk.currentTime=0;honk.play();}catch(e){}};
   bikeProp.querySelector(".bike-hit").addEventListener("click",tog);
   bikeProp.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();tog();}});}
