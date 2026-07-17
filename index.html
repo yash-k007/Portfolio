@@ -310,9 +310,9 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
 @property --glow-angle{syntax:'<angle>';inherits:false;initial-value:0deg}
 .pocket{position:absolute;left:0;right:0;bottom:0;top:0;border-radius:24px;
   z-index:5;overflow:visible;
-  background:url('slides/folder-portfolio-21.png') center/contain no-repeat}
+  background:url('slides/folder-portfolio-21.webp') center/contain no-repeat}
 .pocket-front{position:absolute;left:0;right:0;bottom:0;top:0;z-index:8;pointer-events:none;
-  background:url('slides/folder-front.png') center/contain no-repeat}
+  background:url('slides/folder-front.webp') center/contain no-repeat}
 .pocket-glow{position:absolute;left:8.5%;right:10%;bottom:8%;top:6.5%;border-radius:18px;z-index:6;
   pointer-events:none;padding:2px;
   background:conic-gradient(from var(--glow-angle),transparent 0deg,transparent 265deg,#3B50E4 300deg,#8f9dff 325deg,#fff 335deg,#8f9dff 345deg,#3B50E4 355deg,transparent 360deg);
@@ -489,6 +489,10 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
 .pdftry{position:absolute;right:3.5%;bottom:6%;display:inline-flex;align-items:center;gap:6px;background:#2e8b43;color:#fff;font-family:var(--font-display);font-weight:600;font-size:clamp(11px,1.5vw,16px);padding:10px 20px;border-radius:999px;box-shadow:0 6px 18px rgba(0,0,0,.3);text-decoration:none;transition:transform .15s,background .15s}
 .pdftry:hover{background:#256e35;transform:translateY(-2px)}
 .pdfloading{color:#fff;opacity:.65;font-family:var(--font-mono);font-size:13px;padding:48px 20px;text-align:center}
+/* ---- full-image case-study viewer ---- */
+.macbody.imgmode{padding:0;background:#0c0c0c}
+.imgdoc{display:block;width:100%}
+.imgdoc img{display:block;width:100%;height:auto}
 </style>
 </head>
 <body>
@@ -566,18 +570,18 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
 <section class="wrap" id="portfolio" style="position:relative;z-index:1">
   <div class="folder-stage">
     <span class="prop phone" id="phoneProp" role="button" tabindex="0" aria-label="Tap to glow the screen">
-      <img class="phone-img dark" src="slides/phone-dark.png" alt="iPhone with smiley screen" />
-      <img class="phone-img blue" src="slides/phone-blue.png" alt="iPhone with blue smiley screen" />
-      <img class="phone-img cracked" src="slides/phone-cracked.png" alt="iPhone with cracked screen" />
+      <img class="phone-img dark" src="slides/phone-dark.webp" alt="iPhone with smiley screen" />
+      <img class="phone-img blue" src="slides/phone-blue.webp" alt="iPhone with blue smiley screen" />
+      <img class="phone-img cracked" src="slides/phone-cracked.webp" alt="iPhone with cracked screen" />
     </span>
     <span class="prop die" id="diceProp" role="button" tabindex="0" aria-label="Roll the dice">
-      <img class="dice-img" src="slides/dice.png" alt="Blue dice" />
+      <img class="dice-img" src="slides/dice.webp" alt="Blue dice" />
     </span>
     <div class="folder" id="folder" tabindex="0" role="button" aria-label="Open portfolio folder">
       <span class="hint" data-i18n="hint">Hover / tap to open the folder</span>
       <div class="files">
         <article class="file dark" data-file="dark"><span class="kic" data-i18n="f_explore">UX/UI CHALLENGE</span><h4 data-i18n="f1">LOCKIN</h4><span class="meta">Fitness App Design</span></article>
-        <article class="file wip" data-file="journey"><span class="kic" data-i18n="f_research">RESEARCH</span><h4 data-i18n="f2">User Journey Map</h4><span class="meta">[ Work in progress ]</span></article>
+        <article class="file blue" data-file="journey"><span class="kic">MOBILE APP</span><h4>GEWISS-Smart Home</h4><span class="meta" style="color:rgba(255,255,255,.7)">WIS · Smart Home</span></article>
         <article class="file" data-file="bank"><span class="kic">CASE STUDY</span><h4>Libraccio.it Redesign</h4><span class="meta">UX/UI · 2024</span></article>
         <article class="file ghost wip" data-file="wires"><span class="kic" data-i18n="f_wire">WIREFRAMES</span><h4 data-i18n="f4">Wireframes</h4><span class="meta">[ Work in progress ]</span></article>
         <article class="file blue" data-file="figma"><span class="kic">MOBILE APP</span><h4>VivoVero</h4><span class="meta" style="color:rgba(255,255,255,.7)">Where ever you go you find it.</span></article>
@@ -669,7 +673,7 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
     <span data-i18n="foot_yr" style="margin:0;z-index:2">© Yash Kumar. UX/UI Designer · Milan · 2026</span>
     <div style="position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:16px;align-items:center;z-index:2">
         <a href="/cdn-cgi/l/email-protection#463f27352e2d332b27342f32272a3f767706212b272f2a6825292b" aria-label="Email yashkumaritaly01@gmail.com" class="gm-mail" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.14);color:#ffffff;transition:background .2s">
-          <span class="gm-tip"><span class="__cf_email__" data-cfemail="3f465e4c57544a525e4d564b5e53460f0e7f58525e5653115c5052">[yashkumaritaly01@gmail.com&#160;]</span></span>
+          <span class="gm-tip"><span class="__cf_email__" data-cfemail="3f465e4c57544a525e4d564b5e53460f0e7f58525e5653115c5052">[<span class="__cf_email__" data-cfemail="d7aeb6a4bfbca2bab6a5bea3b6bbaee7e697b0bab6bebbf9b4b8ba">[email&#160;protected]</span>&#160;]</span></span>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/></svg>
         </a>
         <a href="https://www.linkedin.com/in/yash-kumar-1yk" target="_blank" rel="noopener" aria-label="LinkedIn" style="display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;transition:background .2s">
@@ -679,7 +683,7 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function(){
   const pc=document.getElementById('footPc');
   if(pc){
@@ -904,6 +908,34 @@ async function openPdfProject(cfg){
 const IFRAME_PROJECTS={
   dark:{title:"Lockin \u2014 Fitness app UI", url:"LOCKIN Case Study.html"}
 };
+const IMG_PROJECTS={
+  journey:{title:"GEWISS \u2014 WIS Smart Home", url:"uploads/gewiss-smart-home.jpg"}
+};
+/* Pre-decode the case-study image once, so opening the project is instant. */
+const imgCache={};
+function prewarmImg(cfg){
+  if(imgCache[cfg.url])return imgCache[cfg.url];
+  const im=new Image();im.decoding="async";im.src=cfg.url;
+  if(im.decode)im.decode().catch(()=>{});
+  imgCache[cfg.url]=im;return im;
+}
+function prewarmAllImgs(){
+  const start=()=>{Object.values(IMG_PROJECTS).forEach(cfg=>prewarmImg(cfg));};
+  if("requestIdleCallback" in window) requestIdleCallback(start,{timeout:1500});
+  else setTimeout(start,300);
+}
+prewarmAllImgs();
+function openImgProject(cfg){
+  mtitle.textContent=cfg.title;
+  mbody.classList.add("imgmode");
+  const im=prewarmImg(cfg);
+  const wrap=document.createElement("div");wrap.className="imgdoc";
+  im.alt=cfg.title;im.style.cssText="display:block;width:100%;height:auto";
+  wrap.appendChild(im);
+  mbody.innerHTML="";mbody.appendChild(wrap);
+  mbody.style.display="";
+  mbody.scrollTop=0;portalOverlay();overlay.classList.add("show");
+}
 const iframehost=document.getElementById("iframehost");
 /* Pre-warm each iframe project once inside a hidden host, so the bundle is
    fully unpacked and painted before the user clicks. The iframe is never
@@ -932,6 +964,7 @@ function openIframeProject(cfg){
   portalOverlay();overlay.classList.add("show");
 }
 function openFile(key){
+  if(IMG_PROJECTS[key])return openImgProject(IMG_PROJECTS[key]);
   if(IFRAME_PROJECTS[key])return openIframeProject(IFRAME_PROJECTS[key]);
   if(PDF_PROJECTS[key])return openPdfProject(PDF_PROJECTS[key]);
   const f=FILES[key];if(!f)return;const t=f[lang];const s=SEC[lang];const cv=COVER[key]||"#302F2B";
@@ -950,7 +983,7 @@ function openFile(key){
     `<div class="bh-foot">${s.end}</div>`;
   mbody.scrollTop=0;portalOverlay();overlay.classList.add("show");
 }
-function closeFile(){overlay.classList.remove("show");macwin.classList.remove("expanded");mbody.classList.remove("pdfmode");mbody.classList.remove("iframemode");mbody.style.display="";iframehost.style.display="none";}
+function closeFile(){overlay.classList.remove("show");macwin.classList.remove("expanded");mbody.classList.remove("pdfmode");mbody.classList.remove("iframemode");mbody.classList.remove("imgmode");mbody.style.display="";iframehost.style.display="none";}
 /* ---------- sound effects (Web Audio, synthesized — no asset files) ---------- */
 const SFX=(()=>{
   let ctx=null, master=null, rainGain=null, rainSrc=null, rainOn=false, rainLfo=null;
