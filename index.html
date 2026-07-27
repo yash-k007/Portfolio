@@ -530,18 +530,15 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
 .imgdoc{display:block;width:100%}
 .imgdoc img{display:block;width:100%;height:auto}
 /* ---------- FACE HERO ---------- */
-.face-hero{padding-top:clamp(40px,9vh,120px);padding-bottom:clamp(30px,7vh,90px);min-height:100vh;display:flex;flex-direction:column;justify-content:center;transform:translateY(-11%);position:relative}
 .fh-stage{position:relative;display:flex;align-items:center;justify-content:center;gap:0;min-height:clamp(260px,34vw,560px);padding-left:0}
 .prop.win.fh-cloud{position:absolute;top:calc(clamp(74px,13vh,140px) + 8%);left:42%;right:auto;bottom:auto;transform:translateX(-50%);z-index:6}
-.fh-character{position:absolute;left:clamp(-105px,-6vw,-70px);bottom:0;z-index:5;height:clamp(260px,35.15vw,521px);width:auto;object-fit:contain;filter:drop-shadow(0 20px 36px rgba(40,44,70,.22))}
-.fh-character-spacer{display:none}
-.fh-txt{display:flex;flex-direction:column;justify-content:center;gap:.06em;flex:1 1 0;min-width:0;font-family:var(--font-display);font-weight:800;letter-spacing:-.035em;line-height:1.08;font-size:clamp(44px,8.2vw,124px);color:var(--label);z-index:1;white-space:nowrap;text-wrap:nowrap}
-.fh-left{text-align:right;align-items:flex-end;padding-left:clamp(20px,4vw,64px);transform:translateX(-9%)}
+.fh-character{position:absolute;left:clamp(-60px,-2.4vw,-40px);bottom:0;z-index:5;height:clamp(260px,35.15vw,521px);width:auto;object-fit:contain;filter:drop-shadow(0 20px 36px rgba(40,44,70,.22))}
+.fh-txt{display:flex;flex-direction:column;justify-content:center;gap:.06em;flex:1 1 0;min-width:0;font-family:var(--font-display);font-weight:800;letter-spacing:-.035em;line-height:1.08;font-size:clamp(44px,7.4vw,104px);color:var(--label);z-index:1;white-space:nowrap;text-wrap:nowrap}
+.fh-left{text-align:right;align-items:flex-end;padding-left:clamp(20px,4vw,64px);transform:translateX(-5%)}
 .fh-right{text-align:left;align-items:flex-start;transform:none;padding-right:clamp(20px,4vw,64px)}
 .fh-txt [data-i18n="fh3"]::first-letter{color:color-mix(in srgb, var(--label) 88%, var(--bg))}
 html[data-theme="dark"] .fh-txt{color:#E4E4E7;opacity:.88}
 .fh-face{position:relative;z-index:2;flex:0 0 auto;align-self:center;margin-inline:calc(-1 * clamp(18px,3vw,46px));width:clamp(187px,25.25vw,374px);aspect-ratio:1137/1383}
-.fh-face .face-base{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;user-select:none;pointer-events:none}
 .fh-eye{position:absolute;transform:translate(-50%,-50%);pointer-events:none;overflow:hidden;
   background:radial-gradient(120% 130% at 50% 34%,#fbf6ee 0%,#f0e6d8 55%,#d8c3a8 78%,#b89b78 100%)}
 .fh-eye.l{left:30.4%;top:58.6%;width:17.6%;aspect-ratio:1/0.6;
