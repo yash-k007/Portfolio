@@ -170,7 +170,7 @@ html[data-theme="dark"] .sel-quote{background:rgba(150,160,185,.5);color:#fff}
   font-size:clamp(11px,1.25vw,15px);line-height:1;padding:9px 15px;border-radius:16px;box-shadow:var(--e1)}
 .cr-callout::after{content:"";position:absolute;left:15px;bottom:-5px;width:13px;height:13px;
   background:var(--bg-tertiary);transform:rotate(45deg);border-radius:0 0 3px 0}
-.prop.phone{left:1%;right:auto;top:62%;width:clamp(61px,7vw,91px);height:clamp(89px,10.1vw,132px);--r:-15deg;background:none;border-radius:0;box-shadow:none;color:inherit;overflow:visible;cursor:pointer;z-index:12}
+.prop.phone{left:-3%;right:auto;top:62%;width:clamp(61px,7vw,91px);height:clamp(89px,10.1vw,132px);--r:-15deg;background:none;border-radius:0;box-shadow:none;color:inherit;overflow:visible;cursor:pointer;z-index:12}
 .phone-img{display:none;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);height:100%;width:auto;filter:drop-shadow(6px 10px 6px rgba(0,0,0,.46));transition:filter .4s ease}
 .phone-img.dark{display:block}
 html[data-theme="dark"] .phone-img.dark{display:none}
@@ -360,7 +360,7 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
 .who{max-width:760px}
 .who-row{flex-wrap:nowrap}
 @media(max-width:900px){.who-row{flex-wrap:wrap}}
-.who p{font-size:clamp(22px,1.9vw,25px);color:var(--label);line-height:1.55}
+.who p{font-size:clamp(22px,2.1vw,32px);color:var(--label);line-height:1.55}
 .who a{color:var(--accent);font-weight:600}
 
 /* toolbox marquee */
@@ -391,11 +391,11 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   background:linear-gradient(to top,rgba(0,0,0,.6) 0%,rgba(0,0,0,.42) 45%,rgba(0,0,0,0) 100%);
   pointer-events:none;z-index:4}
 /* classic Mac sitting in the footer grass (grass behind + tuft in front) */
-.foot-pc{position:absolute;left:50%;right:auto;transform:translate(-22%,-5%);bottom:clamp(-6px,0.5vw,14px);
+.foot-pc{position:absolute;left:50%;right:auto;transform:translateX(-22%);bottom:clamp(-6px,0.5vw,14px);
   width:clamp(150px,17vw,250px);height:auto;z-index:3;cursor:pointer}
 .foot-pc:focus-visible{outline:3px solid #6fb84a;outline-offset:6px;border-radius:8px}
 .foot-pc-img{width:100%;height:auto;display:block;pointer-events:none}
-.foot-figure{position:absolute;left:50%;right:auto;transform:translate(-82%,-5%);bottom:clamp(-6px,0.5vw,14px);z-index:2;
+.foot-figure{position:absolute;left:50%;right:auto;transform:translateX(-82%);bottom:clamp(-6px,0.5vw,14px);z-index:2;
   height:clamp(270px,36vw,480px);width:auto;pointer-events:none}
 .foot-character{position:absolute;left:clamp(140px,17vw,300px);bottom:clamp(-6px,0.5vw,14px);z-index:2;
   height:clamp(220px,28vw,380px);width:auto;pointer-events:none}
@@ -531,20 +531,23 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
 .imgdoc img{display:block;width:100%;height:auto}
 /* ---------- FACE HERO ---------- */
 .face-hero{padding-top:clamp(40px,9vh,120px);padding-bottom:clamp(30px,7vh,90px);min-height:100vh;display:flex;flex-direction:column;justify-content:center;transform:translateY(-11%)}
-.fh-stage{position:relative;display:flex;align-items:center;justify-content:center;gap:0;min-height:clamp(260px,46vh,560px);padding-left:clamp(24px,3vw,90px)}
+.fh-stage{position:relative;display:flex;align-items:center;justify-content:center;gap:0;min-height:clamp(260px,34vw,560px);padding-left:0}
 .face-hero{position:relative}
-.prop.win.fh-cloud{position:absolute;top:calc(clamp(74px,13vh,140px) + 12%);left:42%;right:auto;bottom:auto;transform:translateX(-50%);z-index:6}
-.fh-character{position:relative;left:-3%;z-index:5;flex:0 0 auto;height:clamp(260px,35.15vw,521px);width:auto;object-fit:contain;align-self:center;
-  margin-left:calc(-1 * clamp(16px,5vw,72px));margin-right:clamp(-10px,-1vw,-4px);filter:drop-shadow(0 20px 36px rgba(40,44,70,.22))}
+.prop.win.fh-cloud{position:absolute;top:calc(clamp(74px,13vh,140px) + 8%);left:42%;right:auto;bottom:auto;transform:translateX(-50%);z-index:6}
+.fh-character{position:absolute;left:clamp(-105px,-6vw,-70px);bottom:0;z-index:5;height:clamp(260px,35.15vw,521px);width:auto;object-fit:contain;
+  filter:drop-shadow(0 20px 36px rgba(40,44,70,.22))}
 .fh-character-spacer{display:none}
 .fh-camera{height:1.91em;width:auto;object-fit:contain;vertical-align:middle;margin:-0.42em 0;margin-right:calc(-1 * clamp(16px,5vw,72px));
   filter:drop-shadow(0 10px 20px rgba(40,44,70,.2))}
 .fh-txt{display:flex;flex-direction:column;justify-content:center;gap:.06em;flex:1 1 0;min-width:0;
   font-family:var(--font-display);font-weight:800;letter-spacing:-.035em;line-height:1.08;
   font-size:clamp(44px,8.2vw,124px);color:var(--label);z-index:1;white-space:nowrap;text-wrap:nowrap}
-.fh-left{text-align:left;align-items:flex-start;padding-left:clamp(20px,4vw,64px);transform:translateX(-14%)}
-.fh-right{text-align:right;align-items:flex-end;transform:translateX(10%)}
-.fh-face{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;
+.fh-left{text-align:right;align-items:flex-end;padding-left:clamp(20px,4vw,64px);transform:translateX(-9%)}
+.fh-txt [data-i18n="fh3"]::first-letter{color:color-mix(in srgb, var(--label) 88%, var(--bg))}
+html[data-theme="dark"] .fh-txt{color:#E4E4E7;opacity:.88}
+.fh-right{text-align:left;align-items:flex-start;transform:none;padding-right:clamp(20px,4vw,64px)}
+.fh-face{position:relative;z-index:2;flex:0 0 auto;align-self:center;
+  margin-inline:calc(-1 * clamp(18px,3vw,46px));
   width:clamp(187px,25.25vw,374px);aspect-ratio:1137/1383}
 .fh-face .face-base{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;user-select:none;pointer-events:none}
 .fh-eye{position:absolute;transform:translate(-50%,-50%);pointer-events:none;overflow:hidden;
@@ -640,17 +643,17 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
   <div class="fh-stage">
     <img class="fh-character" src="slides/hero-character-pose2.webp" alt="3D character standing with hands in pockets" decoding="async" fetchpriority="high" />
     <div class="fh-txt fh-left">
-      <span data-i18n="fh1" style="transform:translateX(-5%)">Hi, I'm</span>
-      <span data-i18n="fh3" style="transform:translateX(-6%)">a UX/UI</span>
-      <span data-i18n="fh5" style="transform:translateX(-5%)">based in</span>
+      <span data-i18n="fh1" style="transform:translateX(-3%);opacity:.88">Hi, I'm</span>
+      <span data-i18n="fh3" style="transform:translateX(10%)">a UX/UI</span>
+      <span data-i18n="fh5" style="transform:translateX(18%);opacity:.88">based in</span>
     </div>
     <div class="fh-face" id="faceTracker" role="img" aria-label="3D avatar of Yash Kumar">
       <img class="face-base" src="slides/face-hero-ch.webp" alt="" decoding="async" fetchpriority="high" />
     </div>
     <div class="fh-txt fh-right">
-      <span data-i18n="fh2" style="transform:translateX(-1%)">Yash Kumar</span>
-      <span data-i18n="fh4" style="transform:translateX(-30%)">Designer</span>
-      <span data-i18n="fh6" style="transform:translateX(-108%)">Milan</span>
+      <span data-i18n="fh2" style="transform:translateX(-7%);opacity:.88">Yash Kumar</span>
+      <span data-i18n="fh4">Designer</span>
+      <span data-i18n="fh6" style="transform:translateX(-9%);opacity:.88">Milan</span>
     </div>
     <span class="prop book" id="bookProp2" role="button" tabindex="0" aria-label="Currently reading: Sprint by Jake Knapp — tap to open" style="position:absolute;left:auto;right:clamp(4px,2.5vw,58px);top:64%;z-index:6;margin-right:4%">
       <span class="book-inner">
@@ -679,7 +682,7 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
     <div class="who-media" style="flex:0 0 auto;min-width:0;order:2;position:relative;display:flex;align-items:flex-end;justify-content:flex-start;gap:clamp(6px,1vw,14px);padding:0;transform-origin:center bottom">
       <img src="slides/ground-island.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" style="position:absolute;left:50%;bottom:-7%;transform:translate(-50%,40%);width:clamp(240px,86%,440px);height:auto;z-index:0;pointer-events:none" />
       <img class="who-character" src="slides/who-reading.webp" alt="3D character reading a book" loading="lazy" decoding="async" style="position:relative;z-index:1;height:clamp(240px,27vw,400px);width:auto;object-fit:contain;transform:translateX(2%) translateY(-5%)" />
-      <div class="who-cert" role="img" aria-label="UX & UI Design certificate — Talent Garden, Yash Kumar" style="position:relative;z-index:0;background:#fff;padding:clamp(5px,0.7vw,10px);border-radius:6px;box-shadow:0 18px 40px rgba(20,24,40,.28);transform:translate(-26%,-18%);height:clamp(272px,30vw,448px)">
+      <div class="who-cert" role="img" aria-label="UX & UI Design certificate — Talent Garden, Yash Kumar" style="position:relative;z-index:0;background:#fff;padding:clamp(5px,0.7vw,10px);border-radius:6px;box-shadow:0 18px 40px rgba(20,24,40,.28);transform:translate(-30%,-18%);height:clamp(272px,30vw,448px)">
         <img src="slides/cert-tag.webp" alt="UX & UI Design Master certificate from Talent Garden awarded to Yash Kumar" loading="lazy" decoding="async" style="height:100%;width:auto;display:block;border-radius:3px" />
       </div>
     </div>
@@ -706,9 +709,9 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
       <span class="hint" data-i18n="hint">Hover / tap to open the folder</span>
       <div class="files">
         <article class="file dark" data-file="figma"><span class="kic">MOBILE APP</span><h4>VivoVero</h4><span class="file-thumb" style="background:linear-gradient(150deg,#e7e7ec,#d3d3da)"><img src="slides/card-vivovero.webp" alt="VivoVero highlight" loading="lazy" decoding="async" onerror="this.style.display='none'" /></span><span class="meta" style="color:rgba(255,255,255,.7)">Where ever you go you find it.</span></article>
-        <article class="file ghost wip" data-file="wires"><span class="kic" data-i18n="f_wire">WIREFRAMES</span><h4 data-i18n="f4">Wireframes</h4><span class="file-thumb" style="background:repeating-linear-gradient(45deg,#e7e7ec,#e7e7ec 10px,#dcdce2 10px,#dcdce2 20px)"><img src="slides/card-wires.webp" alt="Wireframes highlight" loading="lazy" decoding="async" onerror="this.style.display='none'" /></span><span class="meta">[ Work in progress ]</span></article>
+        <article class="file ghost wip" data-file="wires"><span class="kic" data-i18n="f_wire">WIREFRAMES</span><h4 data-i18n="f4">Wireframes</h4><span class="file-thumb" style="background:repeating-linear-gradient(45deg,#e7e7ec,#e7e7ec 10px,#dcdce2 10px,#dcdce2 20px)"></span><span class="meta">[ Work in progress ]</span></article>
         <article class="file dark" data-file="dark"><span class="kic" data-i18n="f_explore">UX/UI CHALLENGE</span><h4 data-i18n="f1">LOCKIN</h4><span class="file-thumb" style="background:linear-gradient(150deg,#e7e7ec,#d3d3da)"><img src="slides/card-lockin.webp" alt="LOCKIN highlight" loading="lazy" decoding="async" onerror="this.style.display='none'" /></span><span class="meta">Fitness App Design</span></article>
-        <article class="file dark" data-file="bank"><span class="kic">CASE STUDY</span><h4>Libraccio.it Redesign</h4><span class="file-thumb" style="background:linear-gradient(150deg,#e7e7ec,#d3d3da)"><img src="slides/card-libraccio.webp" alt="Libraccio.it highlight" loading="lazy" decoding="async" onerror="this.style.display='none'" /></span><span class="meta">UX/UI · 2025</span></article>
+        <article class="file dark" data-file="bank"><span class="kic">CASE STUDY</span><h4>Libraccio.it Redesign</h4><span class="file-thumb" style="background:linear-gradient(150deg,#e7e7ec,#d3d3da)"><img src="slides/card-libraccio.webp" alt="Libraccio.it highlight" loading="lazy" decoding="async" onerror="this.style.display='none'" /></span><span class="meta">UX/UI · 2024</span></article>
         <article class="file dark" data-file="journey"><span class="kic">MOBILE APP</span><h4>GEWISS-Smart Home</h4><span class="file-thumb" style="background:linear-gradient(150deg,#e7e7ec,#d3d3da)"><img src="slides/card-gewiss.webp" alt="GEWISS Smart Home highlight" loading="lazy" decoding="async" onerror="this.style.display='none'" /></span><span class="meta" style="color:rgba(255,255,255,.7)">WIS · Smart Home</span></article>
       </div>
       <div class="pocket"></div>
@@ -724,7 +727,7 @@ html[data-theme="dark"] .bolt{display:block;animation:boltFlash 4s ease-in-out i
 <!-- who-am-i moved above portfolio -->
 
 <section id="statement" style="margin-top:30vh;margin-bottom:28vh;display:flex;align-items:center;justify-content:center">
-  <div class="statement" style="flex:0 1 auto;min-width:0;font-size:clamp(30px,4.6vw,66px);justify-content:center;text-align:center;transform:translateY(-40%)">
+  <div class="statement" style="flex:0 1 auto;min-width:0;font-size:clamp(30px,4.6vw,66px);justify-content:center;text-align:center;transform:translateY(-23%)">
     <span data-i18n="st1">Creativity is not</span>
     <span class="chip green"><img class="chip-img" src="slides/boy-hd.webp" alt="Person reading on grass" loading="lazy" decoding="async" /></span>
     <span data-i18n="st_opt">optional</span>
@@ -890,13 +893,13 @@ fillTrack("row1",r1);
 
 /* ---------- case-study section labels ---------- */
 const SEC={
-  en:{role:"UX/UI Design · 2025 · Figma, After Effects",
+  en:{role:"UX/UI Design · 2024 · Figma, After Effects",
     challenge:"The challenge",process:"Process & exploration",outcome:"Outcome",
     cp:"Framing the real problem before touching a single pixel — talking to users, mapping the journey, and finding where the friction actually lives.",
     pp:"Iterating in the open: low-fidelity flows, quick prototypes, and constant testing until the simplest version that works reveals itself.",
     op:"The shipped result — measured, validated, and handed off with documentation engineers can build from directly.",
     end:"End of project — scroll up to revisit any section."},
-  it:{role:"UX/UI Design · 2025 · Figma, After Effects",
+  it:{role:"UX/UI Design · 2024 · Figma, After Effects",
     challenge:"La sfida",process:"Processo ed esplorazione",outcome:"Risultato",
     cp:"Inquadrare il problema reale prima di toccare un solo pixel — parlare con gli utenti, mappare il percorso e trovare dove nasce davvero l'attrito.",
     pp:"Iterare allo scoperto: flussi a bassa fedeltà, prototipi rapidi e test continui finché emerge la versione più semplice che funziona.",
@@ -912,7 +915,7 @@ const FILES={
   journey:{en:["RESEARCH","User Journey Map"],it:["RICERCA","Mappa del Percorso Utente"],
     body:["Mapping the end-to-end journey of a first-time mobile-banking user, from onboarding anxiety to the relief of a completed transfer.",
       "Pain points, emotional highs and lows, and opportunity areas, synthesized from 12 interviews."]},
-  bank:{en:["CASE STUDY · 2025","Minimal Banking App"],it:["CASE STUDY · 2025","App Bancaria Minimale"],
+  bank:{en:["CASE STUDY · 2024","Minimal Banking App"],it:["CASE STUDY · 2024","App Bancaria Minimale"],
     body:["A $12K freelance engagement: redesigning a regional bank's mobile app around clarity and trust.",
       "The brief was 'make money feel calm.' The result cut the transfer flow from 7 taps to 3 and lifted task-success in usability testing to 94%."]},
   wires:{en:["WIREFRAMES","Wireframes"],it:["WIREFRAME","Wireframe"],
